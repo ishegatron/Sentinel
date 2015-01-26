@@ -1,0 +1,722 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{152376B9-4CED-4671-9CCB-6BD9F06A1E0D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sentinel</RootNamespace>
+    <AssemblyName>Sentinel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>3.0.1927.0</ExpressionBlendVersion>
+    <ApplicationIcon>Sentinel.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>\\cimx\Installs\Sentinel\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <SupportUrl>http://sentinel.codeplex.com/</SupportUrl>
+    <ProductName>Sentinel</ProductName>
+    <PublisherName>Sentinel</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>0.9.6.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B0274DED5261B57773C25EB189320F38D5D441E3</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Sentinel_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.2.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="MainApplication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Classification\Classifier.cs" />
+    <Compile Include="Classification\Gui\AddClassifier.cs" />
+    <Compile Include="Classification\Gui\AddEditClassifier.cs" />
+    <Compile Include="Classification\Gui\AddEditClassifierWindow.xaml.cs">
+      <DependentUpon>AddEditClassifierWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classification\Gui\EditClassifier.cs" />
+    <Compile Include="Classification\Gui\RemoveClassifier.cs" />
+    <Compile Include="Controls\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RecentFileInfo.cs" />
+    <Compile Include="Controls\WindowPlacementInfo.cs" />
+    <Compile Include="Extractors\ExtractingService.cs" />
+    <Compile Include="Extractors\Extractor.cs" />
+    <Compile Include="Extractors\Gui\AddEditExtractor.cs" />
+    <Compile Include="Extractors\Gui\AddEditExtractorWindow.xaml.cs">
+      <DependentUpon>AddEditExtractorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extractors\Gui\AddExtractor.cs" />
+    <Compile Include="Extractors\Gui\EditExtractor.cs" />
+    <Compile Include="Extractors\Gui\ExtractorsControl.xaml.cs">
+      <DependentUpon>ExtractorsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extractors\Gui\RemoveExtractor.cs" />
+    <Compile Include="Extractors\Interfaces\IAddExtractorService.cs" />
+    <Compile Include="Extractors\Interfaces\IEditExtractorService.cs" />
+    <Compile Include="Extractors\Interfaces\IExtractingService.cs" />
+    <Compile Include="Extractors\Interfaces\IExtractor.cs" />
+    <Compile Include="Extractors\Interfaces\IRemoveExtractorService.cs" />
+    <Compile Include="Extractors\Interfaces\ISearchExtractor.cs" />
+    <Compile Include="Extractors\SearchExtractor.cs" />
+    <Compile Include="Filters\Interfaces\IFilter.cs" />
+    <Compile Include="Filters\Interfaces\ISearchFilter.cs" />
+    <Compile Include="Filters\Interfaces\IStandardDebuggingFilter.cs" />
+    <Compile Include="Filters\SearchFilter.cs" />
+    <Compile Include="Filters\StandardFilter.cs" />
+    <Compile Include="Highlighters\Interfaces\IHighlighter.cs" />
+    <Compile Include="Highlighters\Interfaces\IStandardDebuggingHighlighter.cs" />
+    <Compile Include="Highlighters\StandardHighlighter.cs" />
+    <Compile Include="Images\ImageQuality.cs" />
+    <Compile Include="Images\ImageTypeRecord.cs" />
+    <Compile Include="Interfaces\IDefaultInitialisation.cs" />
+    <Compile Include="Filters\Interfaces\IAddFilterService.cs" />
+    <Compile Include="Filters\Interfaces\IEditFilterService.cs" />
+    <Compile Include="Filters\Interfaces\IFilteringService.cs" />
+    <Compile Include="Filters\Interfaces\IRemoveFilterService.cs" />
+    <Compile Include="Highlighters\Interfaces\IAddHighlighterService.cs" />
+    <Compile Include="Highlighters\Interfaces\IEditHighlighterService.cs" />
+    <Compile Include="Highlighters\Interfaces\IHighlightingService.cs" />
+    <Compile Include="Highlighters\Interfaces\ISearchHighlighter.cs" />
+    <Compile Include="Highlighters\Interfaces\IRemoveHighlighterService.cs" />
+    <Compile Include="Images\Interfaces\IAddTypeImage.cs" />
+    <Compile Include="Images\Interfaces\IEditTypeImage.cs" />
+    <Compile Include="Images\Interfaces\IRemoveTypeImage.cs" />
+    <Compile Include="Images\Interfaces\ITypeImageService.cs" />
+    <Compile Include="Interfaces\CaseInsensitiveComparer.cs" />
+    <Compile Include="Interfaces\CollectionChangeHelper.cs" />
+    <Compile Include="Interfaces\EnumerableExtensions.cs" />
+    <Compile Include="Interfaces\IHighlighterStyle.cs" />
+    <Compile Include="Interfaces\IUserPreferences.cs" />
+    <Compile Include="Interfaces\LinqHelpers.cs" />
+    <Compile Include="Interfaces\LogEntry.cs" />
+    <Compile Include="Interfaces\LogEntryField.cs" />
+    <Compile Include="Interfaces\LogEntryFieldHelper.cs" />
+    <Compile Include="Interfaces\MatchMode.cs" />
+    <Compile Include="Logs\Interfaces\ILogFileExporter.cs" />
+    <Compile Include="Logs\Interfaces\ILogManager.cs" />
+    <Compile Include="Logs\LogFileExporter.cs" />
+    <Compile Include="Providers\Interfaces\INewProviderWizard.cs" />
+    <Compile Include="Providers\Interfaces\IProviderManager.cs" />
+    <Compile Include="Providers\Interfaces\PendingProviderRecord.cs" />
+    <Compile Include="Providers\NewProviderWizard.cs" />
+    <Compile Include="Providers\ProviderInfo.cs" />
+    <Compile Include="Providers\ProviderManager.cs" />
+    <Compile Include="Providers\ProviderRegistrationRecord.cs" />
+    <Compile Include="Providers\ProviderSettings.cs" />
+    <Compile Include="Providers\SelectProviderPage.xaml.cs">
+      <DependentUpon>SelectProviderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AttributeHelper.cs" />
+    <Compile Include="Services\DictionaryHelper.cs" />
+    <Compile Include="Services\Interfaces\ISessionManager.cs" />
+    <Compile Include="Services\ServiceLocator.cs" />
+    <Compile Include="Services\SessionManager.cs" />
+    <Compile Include="Support\Converters\BooleanToWidthConverter.cs" />
+    <Compile Include="Support\Converters\BoolToDisableConverter.cs" />
+    <Compile Include="Support\Converters\ColourConverter.cs" />
+    <Compile Include="Support\Converters\ImageLibraryConverter.cs" />
+    <Compile Include="Support\Converters\IsTimingMessageValueConverter.cs" />
+    <Compile Include="Support\Converters\LongPathToShortPathConverter.cs" />
+    <Compile Include="Support\Converters\MatchModeConverter.cs" />
+    <Compile Include="Support\Converters\MessageHasExceptionMetadataConverter.cs" />
+    <Compile Include="Support\Converters\TimeSinceDateTimeConverter.cs" />
+    <Compile Include="Support\Converters\TypeToImageConverter.cs" />
+    <Compile Include="Support\Converters\TypeToLargeImageConverter.cs" />
+    <Compile Include="Support\Converters\TypeToMediumImageConverter.cs" />
+    <Compile Include="Support\Converters\TypeToSmallImageConverter.cs" />
+    <Compile Include="Support\Converters\VisibilityToCollapsedConverter.cs" />
+    <Compile Include="Support\JsonHelper.cs" />
+    <Compile Include="Support\Mvvm\DelegateCommand.cs" />
+    <Compile Include="Support\Mvvm\ViewModelBase.cs" />
+    <Compile Include="Support\RegexExtensions.cs" />
+    <Compile Include="Support\Wpf\DataBoundToolbar.cs" />
+    <Compile Include="Support\Wpf\FixedWidthColumn.xaml.cs" />
+    <Compile Include="Support\Wpf\ObservableDictionary.cs" />
+    <Compile Include="Support\Wpf\ThemeInfo.cs" />
+    <Compile Include="Views\Gui\LogMessages.cs" />
+    <Compile Include="Views\Gui\LogMessagesControl.xaml.cs">
+      <DependentUpon>LogMessagesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gui\LogViewerToolbarButton.cs" />
+    <Compile Include="Views\Gui\MultipleViewFrame.xaml.cs">
+      <DependentUpon>MultipleViewFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gui\ViewInformation.cs" />
+    <Compile Include="Views\Heartbeat\HeartbeatControl.xaml.cs">
+      <DependentUpon>HeartbeatControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Heartbeat\MessageHeatbeat.cs" />
+    <Compile Include="Views\Interfaces\ILogViewer.cs" />
+    <Compile Include="Views\Interfaces\ILogViewerToolbarButton.cs" />
+    <Compile Include="Views\Interfaces\IViewInformation.cs" />
+    <Compile Include="Views\Interfaces\IViewManager.cs" />
+    <Compile Include="Views\Interfaces\IWindowFrame.cs" />
+    <Compile Include="Views\ViewManager.cs" />
+    <Page Include="Classification\Gui\AddEditClassifierWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Classification\Gui\ClassificationsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ImageTypesControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\LogActivityControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PreferencesControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PreferencesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Classification\ClassifyingService.cs" />
+    <Compile Include="Classification\Gui\ClassificationsControl.xaml.cs">
+      <DependentUpon>ClassificationsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classification\Interfaces\IAddClassifyingService.cs" />
+    <Compile Include="Classification\Interfaces\IClassifier.cs" />
+    <Compile Include="Classification\Interfaces\IClassifyingService.cs" />
+    <Compile Include="Classification\Interfaces\IEditClassifyingService.cs" />
+    <Compile Include="Classification\Interfaces\IRemoveClassifyingService.cs" />
+    <Compile Include="Filters\Filter.cs" />
+    <Compile Include="Filters\FilteringService.cs" />
+    <Compile Include="Filters\Gui\AddEditFilter.cs" />
+    <Compile Include="Filters\Gui\AddEditFilterWindow.xaml.cs">
+      <DependentUpon>AddEditFilterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\Gui\AddFilter.cs" />
+    <Compile Include="Filters\Gui\EditFilter.cs" />
+    <Compile Include="Filters\Gui\FiltersControl.xaml.cs">
+      <DependentUpon>FiltersControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\Gui\RemoveFilter.cs" />
+    <Compile Include="Highlighters\Gui\AddEditHighlighter.cs" />
+    <Compile Include="Highlighters\Gui\AddEditHighlighterWindow.xaml.cs">
+      <DependentUpon>AddEditHighlighterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Highlighters\Gui\AddNewHighlighterService.cs" />
+    <Compile Include="Highlighters\Gui\EditHighlighterService.cs" />
+    <Compile Include="Highlighters\Gui\HighlightersControl.xaml.cs">
+      <DependentUpon>HighlightersControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Highlighters\Gui\RemoveHighlighterService.cs" />
+    <Compile Include="Highlighters\Highlighter.cs" />
+    <Compile Include="Highlighters\HighlighterConverter.cs" />
+    <Compile Include="Highlighters\HighlighterStyle.cs" />
+    <Compile Include="Highlighters\HighlightingSelector.cs" />
+    <Compile Include="Highlighters\HighlightingService.cs" />
+    <Compile Include="Highlighters\SearchHighlighter.cs" />
+    <Compile Include="Images\AddEditTypeImageViewModel.cs" />
+    <Compile Include="Images\AddTypeImageService.cs" />
+    <Compile Include="Images\Controls\AddImageWindow.xaml.cs">
+      <DependentUpon>AddImageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Images\EditTypeImageMapping.cs" />
+    <Compile Include="Images\RemoveTypeImageMapping.cs" />
+    <Compile Include="Images\TypeToImageService.cs" />
+    <Compile Include="Logs\Gui\AddNewLoggerWelcomePage.xaml.cs">
+      <DependentUpon>AddNewLoggerWelcomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\Gui\NewLoggerSettings.cs" />
+    <Compile Include="Logs\Gui\NewLoggerSummaryPage.xaml.cs">
+      <DependentUpon>NewLoggerSummaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\Gui\NewLoggerWizard.cs" />
+    <Compile Include="Logs\Gui\ProvidersPage.xaml.cs">
+      <DependentUpon>ProvidersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\Gui\SetLoggerNamePage.xaml.cs">
+      <DependentUpon>SetLoggerNamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\Gui\ViewSelectionPage.xaml.cs">
+      <DependentUpon>ViewSelectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\Log.cs" />
+    <Compile Include="Logs\LogManager.cs" />
+    <Compile Include="MainApplication.xaml.cs">
+      <DependentUpon>MainApplication.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Extractors\Gui\AddEditExtractorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Extractors\Gui\ExtractorsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Filters\Gui\AddEditFilterWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Filters\Gui\FiltersControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Highlighters\Gui\AddEditHighlighterWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Highlighters\Gui\HighlightersControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Images\Controls\AddImageWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Logs\Gui\AddNewLoggerWelcomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Logs\Gui\ViewSelectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Logs\Gui\NewLoggerSummaryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Logs\Gui\ProvidersPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Logs\Gui\SetLoggerNamePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Providers\SelectProviderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gui\LogMessagesControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Gui\MultipleViewFrame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Heartbeat\HeartbeatControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Logger\ILogViewerDetails.cs" />
+    <Compile Include="Logger\IUdpLogViewer.cs" />
+    <Compile Include="Logger\LogEntryFieldHelper.cs" />
+    <Compile Include="Controls\ImageTypesControl.xaml.cs">
+      <DependentUpon>ImageTypesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageView.cs" />
+    <Compile Include="Preferences\UserPreferences.cs" />
+    <Compile Include="Controls\PreferencesWindow.xaml.cs">
+      <DependentUpon>PreferencesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LogActivityControl.xaml.cs">
+      <DependentUpon>LogActivityControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Support\GridViewSort.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Support\ScrollingHelper.cs" />
+    <Compile Include="Controls\PreferencesControl.xaml.cs">
+      <DependentUpon>PreferencesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Logger\LogWriter.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Sentinel_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Debug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Fatal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sentinel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\ScrollDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Glyphs\SortDownArrow.png" />
+    <Resource Include="Resources\Glyphs\SortUpArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Layout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Trace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sentinel.FileMonitor\Sentinel.FileMonitor.csproj">
+      <Project>{DB6FC9BC-C9E0-4BCB-8A4E-C85BC97128A8}</Project>
+      <Name>Sentinel.FileMonitor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sentinel.MSBuild\Sentinel.MSBuild.csproj">
+      <Project>{1f9a47bd-297c-4e5b-81fc-541a47f25d77}</Project>
+      <Name>Sentinel.MSBuild</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sentinel.Interfaces\Sentinel.Interfaces.csproj">
+      <Project>{AA7AE77F-D8FE-4D3E-98C0-789A0E886EC6}</Project>
+      <Name>Sentinel.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sentinel.Log4Net\Sentinel.Log4Net.csproj">
+      <Project>{54F01DDC-4CFA-46F0-9BF7-52A23F3302DA}</Project>
+      <Name>Sentinel.Log4Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sentinel.NLog\Sentinel.NLog.csproj">
+      <Project>{EABC1023-A456-44A7-9D8C-FCD0F6323C58}</Project>
+      <Name>Sentinel.NLog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfExtras\WpfExtras.csproj">
+      <Project>{1DD6CD3B-E53D-4770-97C9-6A5B0B551E89}</Project>
+      <Name>WpfExtras</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Fatal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Fatal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Debug.png" />
+    <Resource Include="Resources\Medium\Debug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Trace.png" />
+    <Resource Include="Resources\Medium\Trace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Warning.png" />
+    <Resource Include="Resources\Medium\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\MonoLightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Unknown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Exception.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Large\Thread.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Exception.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Medium\Thread.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Exception.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Small\Thread.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
