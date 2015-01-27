@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Sentinel : ...to watch over as a guard and provide real-time organization of logging sessions...">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-    <title>Sentinel</title>
+    <title>Sentinel by ishegatron</title>
   </head>
 
   <body>
+    <header>
+      <div class="inner">
+        <h1>Sentinel</h1>
+        <h2>...to watch over as a guard and provide real-time organization of logging sessions...</h2>
+        <a href="https://github.com/ishegatron/Sentinel" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/ishegatron/Sentinel">View on GitHub</a>
-
-          <h1 id="project_title">Sentinel</h1>
-          <h2 id="project_tagline">...to watch over as a guard and provide real-time organization of logging sessions...</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/ishegatron/Sentinel/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/ishegatron/Sentinel/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>
 <a id="about-sentinel" class="anchor" href="#about-sentinel" aria-hidden="true"><span class="octicon octicon-link"></span></a>About Sentinel</h3>
 
 <p>Sentinel is a log viewer (implemented in WPF) with configurable filtering, extracting, and highlighting (foreground/background colours). Custom classifiers allow messages to be parsed and recomposed prior to display.  This site is a fork of the original Sentinel project by Ray Hayes (<a href="http://sentinel.codeplex.com">http://sentinel.codeplex.com</a>).</p>
+
+<p><img src="http://ishegatron.github.io/Sentinel/images/SentinelScreenshot.jpg" alt="Sentinel Screenshot"></p>
 
 <h3>
 <a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
@@ -53,27 +52,37 @@
 <h4>
 <a id="classifiers" class="anchor" href="#classifiers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classifiers</h4>
 
-<p>Upon receiving a new log entry it is processed through registered classifiers. Classifiers have the ability to rewrite the log entry prior to passing it to the visualisation aspect of Sentinel.  Custom classifiers can be added, removed, and edited using the Preferences dialog box.</p>
+<p>Upon receiving a new log entry it is processed through registered classifiers. Classifiers have the ability to rewrite the log entry prior to passing it to the visualisation aspect of Sentinel.  Custom classifiers can be added, removed, and edited using the Preferences dialog box:</p>
+
+<p><img src="http://ishegatron.github.io/Sentinel/images/SentinelClassifiers.jpg" alt="Classifiers"></p>
 
 <h4>
 <a id="filters" class="anchor" href="#filters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filters</h4>
 
 <p>Filters remove log entries from the displayed values (note, the values are not lost, just hidden). Filters may be toggled on and off during the session. Filters are evaluated in the order specified, but since they hide any logs that match their criteria, the evaluation stops on the first match. Custom filters can be added, removed, and edited using the Preferences dialog box.</p>
 
+<p><img src="http://ishegatron.github.io/Sentinel/images/SentinelFilters.jpg" alt="Filters"></p>
+
 <h4>
 <a id="extractors" class="anchor" href="#extractors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extractors</h4>
 
 <p>Extractors are the opposite of filters - they only display log entries that match their criteria. Extractors may be toggled on and off during the session. Extractors are evaluated in the order specified, but since they hide any logs that do NOT match their criteria, the evaluation stops on the first match. Custom filters can be added, removed, and edited using the Preferences dialog box.</p>
+
+<p><img src="http://ishegatron.github.io/Sentinel/images/SentinelExtractors.jpg" alt="Extractors"></p>
 
 <h4>
 <a id="highlighters" class="anchor" href="#highlighters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Highlighters</h4>
 
 <p>Highlighters change the background and foreground color of log entries as they appear in view.  Highlighters may be toggled on and off during the session.  Custom highlighters can be added, removed, and edited using the Preferences dialog box.</p>
 
+<p><img src="http://ishegatron.github.io/Sentinel/images/SentinelHighlighters.jpg" alt="Highlighters"></p>
+
 <h4>
 <a id="custom-images" class="anchor" href="#custom-images" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Images</h4>
 
 <p>As logs are displayed in the viewer window, they are often associated with an image that is registered by type.  Custom images can be registered using the Preferences dialog box.</p>
+
+<p><img src="http://ishegatron.github.io/Sentinel/images/SentinelImages.jpg" alt="Images"></p>
 
 <h4>
 <a id="quick-search" class="anchor" href="#quick-search" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick Search</h4>
@@ -139,23 +148,30 @@
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>Ray Hayes (<a href="http://www.codeplex.com/site/users/view/yarseyah">yarseyah</a>)</p>
+<ul>
+<li>Ray Hayes (<a href="http://www.codeplex.com/site/users/view/yarseyah">yarseyah</a>)</li>
+<li><a href="http://www.codeplex.com/site/users/view/constructor">constructor</a></li>
+<li>Ishmal Lewis (<a href="https://github.com/ishegatron" class="user-mention">@ishegatron</a>)</li>
+</ul>
+        </section>
 
-<p><a href="http://www.codeplex.com/site/users/view/constructor">constructor</a></p>
+        <aside id="sidebar">
+          <a href="https://github.com/ishegatron/Sentinel/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ishegatron/Sentinel/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
 
-<p>Ishmal Lewis (<a href="https://github.com/ishegatron" class="user-mention">@ishegatron</a>)</p>
-      </section>
+          <p class="repo-owner"><a href="https://github.com/ishegatron/Sentinel"></a> is maintained by <a href="https://github.com/ishegatron">ishegatron</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Sentinel maintained by <a href="https://github.com/ishegatron">ishegatron</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
+  
   </body>
 </html>
