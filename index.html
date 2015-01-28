@@ -8,6 +8,15 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+	
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-59047046-1', 'auto');
+	ga('send', 'pageview');
+	</script>
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -156,8 +165,8 @@
         </section>
 
         <aside id="sidebar">
-			<a href="https://ishegatron.github.io/Sentinel/deploy/latest/setup.exe" class="button">
-            <small>Download</small>
+			<a id="downloadanchor" href="https://ishegatron.github.io/Sentinel/deploy/latest/setup.exe" class="button">
+            <small>Download Newest Release</small>
             .exe file
           </a>
           <a href="https://github.com/ishegatron/Sentinel/zipball/master" class="button">
@@ -175,7 +184,27 @@
         </aside>
       </div>
     </div>
+	
+	<script>
+	var downloadLink = document.getElementById('downloadanchor');
+	addListener(downloadLink, 'click', function() {
+	ga('send', 'event', 'button', 'click', 'nav-buttons', 1);
+	});
 
-  
+	/**
+	* Utility to wrap the different behaviors between W3C-compliant browsers
+	* and IE when adding event handlers.
+	*
+	* @param {Object} element Object on which to attach the event listener.
+	* @param {string} type A string representing the event type to listen for
+	*     (e.g. load, click, etc.).
+	* @param {function()} callback The function that receives the notification.
+	*/
+	function addListener(element, type, callback) {
+	if (element.addEventListener) element.addEventListener(type, callback);
+	else if (element.attachEvent) element.attachEvent('on' + type, callback);
+	}
+	</script>
+	
   </body>
 </html>
