@@ -197,13 +197,13 @@
 			var targzLink = document.getElementById('targzdownload');
 			
 			addGAListener(exeLink, 'click', function() {
-			_gaq.push(['_trackEvent', 'Buttons', 'Downloads', 'EXE']);
+			pageTracker._trackEvent('Buttons', 'Downloads', 'EXE');
 			});
 			addGAListener(zipLink, 'click', function() {
-			_gaq.push(['_trackEvent', 'Buttons', 'Downloads', 'ZIP']);
+			pageTracker._trackEvent('Buttons', 'Downloads', 'ZIP');
 			});
 			addGAListener(targzLink, 'click', function() {
-			_gaq.push(['_trackEvent', 'Buttons', 'Downloads', 'TARGZ']);
+			pageTracker._trackEvent('Buttons', 'Downloads', 'TARGZ');
 			});
 		  </script>
 
