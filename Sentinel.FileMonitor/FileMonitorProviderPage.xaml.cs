@@ -25,14 +25,14 @@
 
         private readonly ReadOnlyObservableCollection<IWizardPage> readonlyChildren;
 
-        private string fileName;
+        private string fileName = string.Empty;
 
         private bool loadExisting;
-        
+
         private double refresh;
-        
-        private bool warnFileNotFound = true;
-        
+
+        private bool warnFileNotFound;
+
         private bool isValid;
 
         public FileMonitorProviderPage()
@@ -213,13 +213,13 @@
 
             IProviderSettings settings = saveData as IProviderSettings;
 
-            if ( settings != null )
+            if (settings != null)
             {
                 IFileMonitoringProviderSettings fileSettings = settings as IFileMonitoringProviderSettings;
 
-                if ( fileSettings != null )
+                if (fileSettings != null)
                 {
-                    fileSettings.Update(fileName, (int) Refresh, LoadExisting);
+                    fileSettings.Update(fileName, (int)Refresh, LoadExisting);
                     return fileSettings;
                 }
 
@@ -227,13 +227,13 @@
                     settings.Info,
                     settings.Name,
                     fileName,
-                    (int) Refresh,
+                    (int)Refresh,
                     LoadExisting);
             }
 
             return saveData;
         }
-        
+
         /// <summary>
         ///   Gets the error message for the property with the given name.
         /// </summary>
@@ -245,36 +245,32 @@
         {
             get
             {
-                if (columnName == "FileName")
+                if (columnName != "FileName")
+                    return null;
+                if (String.IsNullOrWhiteSpace(FileName))
+                    return "File name not specified";
+
+                try
                 {
-                    if (String.IsNullOrEmpty(FileName))
-                    {
-                        return "File name not specified";
-                    }
-
-                    try
-                    {
-                        FileInfo fi = new FileInfo(FileName);
-                    }
-                    catch (NotSupportedException)
-                    {
-                        return "The file name specified is not valid for a file.";
-                    }
-                    catch (ArgumentException)
-                    {
-                        return "The file name specified is not valid for a file.";
-                    }
-                    catch (PathTooLongException)
-                    {
-                        return "The file name specified is too long to be a valid file.";
-                    }
-                    catch (SecurityException)
-                    {
-                        return "You do not have permission to work with that file/location.";
-                    }
+                    new FileInfo(FileName);
+                    return null;
                 }
-
-                return null;
+                catch (NotSupportedException)
+                {
+                    return "The file name specified is not valid for a file.";
+                }
+                catch (ArgumentException)
+                {
+                    return "The file name specified is not valid for a file.";
+                }
+                catch (PathTooLongException)
+                {
+                    return "The file name specified is too long to be a valid file.";
+                }
+                catch (SecurityException)
+                {
+                    return "You do not have permission to work with that file/location.";
+                }
             }
         }
 
@@ -335,7 +331,6 @@
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            FileName = string.Empty;
             Refresh = 250;
         }
     }
