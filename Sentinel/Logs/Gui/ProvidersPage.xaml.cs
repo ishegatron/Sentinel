@@ -1,4 +1,6 @@
 ﻿
+using Sentinel.Support.Mvvm;
+
 namespace Sentinel.Logs.Gui
 {
     using System.Collections.ObjectModel;
@@ -13,14 +15,14 @@ namespace Sentinel.Logs.Gui
     using Common.Logging;
 
     using Sentinel.Interfaces.Providers;
-    using Sentinel.NLog;
-    using Sentinel.Providers;
-    using Sentinel.Providers.Interfaces;
-    using Sentinel.Services;
+    using NLog;
+    using Providers;
+    using Providers.Interfaces;
+    using Services;
 
     using WpfExtras;
 
-    using DelegateCommand = Sentinel.Support.Mvvm.DelegateCommand;
+    using DelegateCommand = DelegateCommand;
 
     /// <summary>
     /// Interaction logic for ProvidersPage.xaml

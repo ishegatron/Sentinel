@@ -25,7 +25,7 @@ namespace Sentinel.Controls
         {
             InitializeComponent();
 
-            this.Owner = parent;            
+            Owner = parent;            
 
             var assembly = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
 

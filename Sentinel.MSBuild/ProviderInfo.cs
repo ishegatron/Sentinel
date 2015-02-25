@@ -2,7 +2,7 @@ namespace Sentinel.MSBuild
 {
     using System;
 
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     public class ProviderInfo : IProviderInfo
     {

@@ -13,8 +13,8 @@
 
     using Common.Logging;
 
-    using Sentinel.Interfaces;
-    using Sentinel.Interfaces.Providers;
+    using Interfaces;
+    using Interfaces.Providers;
 
     public class Log4NetProvider : INetworkProvider
     {

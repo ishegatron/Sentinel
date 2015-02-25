@@ -12,8 +12,8 @@ namespace Sentinel.Highlighters.Gui
 {
     using System.Windows;
 
-    using Sentinel.Highlighters.Interfaces;
-    using Sentinel.Services;
+    using Interfaces;
+    using Services;
 
     public class RemoveHighlighterService : IRemoveHighlighterService
     {

@@ -5,10 +5,10 @@
     using System.Linq;
     using System.Text;
 
-    using Sentinel.Providers.Interfaces;
-    using Sentinel.Services;
-    using Sentinel.Support.Mvvm;
-    using Sentinel.Views.Interfaces;
+    using Providers.Interfaces;
+    using Services;
+    using Support.Mvvm;
+    using Views.Interfaces;
 
     public class NewLoggerSettings : ViewModelBase
     {

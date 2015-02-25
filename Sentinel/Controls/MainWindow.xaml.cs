@@ -7,6 +7,8 @@
 //
 #endregion
 
+using WpfExtras.Converters;
+
 namespace Sentinel.Controls
 {
     using System;
@@ -24,27 +26,27 @@ namespace Sentinel.Controls
 
     using Common.Logging;
 
-    using Sentinel.Filters.Interfaces;
-    using Sentinel.Highlighters.Interfaces;
-    using Sentinel.Interfaces;
-    using Sentinel.Interfaces.Providers;
-    using Sentinel.Log4Net;
-    using Sentinel.Logs.Gui;
-    using Sentinel.Logs.Interfaces;
-    using Sentinel.NLog;
-    using Sentinel.Providers;
-    using Sentinel.Providers.Interfaces;
-    using Sentinel.Services;
-    using Sentinel.Support;
-    using Sentinel.Support.Mvvm;
-    using Sentinel.Views.Gui;
-    using Sentinel.Views.Interfaces;
+    using Filters.Interfaces;
+    using Highlighters.Interfaces;
+    using Interfaces;
+    using Interfaces.Providers;
+    using Log4Net;
+    using Logs.Gui;
+    using Logs.Interfaces;
+    using NLog;
+    using Providers;
+    using Providers.Interfaces;
+    using Services;
+    using Support;
+    using Support.Mvvm;
+    using Views.Gui;
+    using Views.Interfaces;
     using System.Windows.Controls.Ribbon;
-    using Sentinel.Extractors.Interfaces;
+    using Extractors.Interfaces;
     using Microsoft.Win32;
-    using Sentinel.Services.Interfaces;
+    using Services.Interfaces;
     using System.Collections.ObjectModel;
-    using Sentinel.Classification.Interfaces;
+    using Classification.Interfaces;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -139,7 +141,7 @@ namespace Sentinel.Controls
                 return ServiceLocator.Instance.Get<IClassifyingService<IClassifier>>();
             }
         }
-        
+
         public IExtractingService<IExtractor> Extractors
         {
             get
@@ -246,7 +248,7 @@ namespace Sentinel.Controls
 
             var result = savefile.ShowDialog(this);
             if (result == true)
-            {                
+            {
                 sessionManager.SaveSession(savefile.FileName);
                 AddToRecentFiles(savefile.FileName);
             }
@@ -270,10 +272,10 @@ namespace Sentinel.Controls
                 else if (userResult == MessageBoxResult.Yes)
                 {
                     SaveSession.Execute(null);
-                    
+
                     // if the user clicked "Cancel" at the save dialog box
                     if (!sessionManager.IsSaved) return;
-                }                
+                }
             }
 
             // Remove the tab control.
@@ -318,29 +320,30 @@ namespace Sentinel.Controls
                 if (result == true) fileNameToLoad = openFile.FileName;
                 else return;
             }
-                // Remove the tab control.
-                if (tabControl.Items.Count > 0)
-                {
-                    var tab = tabControl.SelectedItem;
-                    tabControl.Items.Remove(tab);
-                }
+            // Remove the tab control.
+            if (tabControl.Items.Count > 0)
+            {
+                var tab = tabControl.SelectedItem;
+                tabControl.Items.Remove(tab);
+            }
 
-                RemoveBindingReferences();
+            RemoveBindingReferences();
 
-                sessionManager.LoadSession(fileNameToLoad);
-                AddToRecentFiles(fileNameToLoad);               
+            sessionManager.LoadSession(fileNameToLoad);
+            AddToRecentFiles(fileNameToLoad);
 
-                BindViewToViewModel();
+            BindViewToViewModel();
 
-                if (sessionManager.ProviderSettings.Count() == 0) return;
+            if (!sessionManager.ProviderSettings.Any())
+                return;
 
-                var frame = ServiceLocator.Instance.Get<IWindowFrame>();
+            var frame = ServiceLocator.Instance.Get<IWindowFrame>();
 
-                // Add to the tab control.
-                var newTab = new TabItem { Header = sessionManager.Name, Content = frame };
-                tabControl.Items.Add(newTab);
-                tabControl.SelectedItem = newTab;
-            
+            // Add to the tab control.
+            var newTab = new TabItem { Header = sessionManager.Name, Content = frame };
+            tabControl.Items.Add(newTab);
+            tabControl.SelectedItem = newTab;
+
         }
 
         /// <summary>
@@ -359,7 +362,8 @@ namespace Sentinel.Controls
 
             BindViewToViewModel();
 
-            if (sessionManager.ProviderSettings.Count() == 0) return;
+            if (!sessionManager.ProviderSettings.Any())
+                return;
 
             var frame = ServiceLocator.Instance.Get<IWindowFrame>();
 
@@ -412,13 +416,13 @@ namespace Sentinel.Controls
                 log.DebugFormat("Provider: {0}", instance.Name);
                 log.DebugFormat("   - is {0}active", instance.IsActive ? string.Empty : "not ");
                 log.DebugFormat("   - logger = {0}", instance.Logger);
-            }            
+            }
         }
 
         private void ProcessCommandLine(IEnumerable<string> commandLine)
         {
             var filePath = commandLine.FirstOrDefault();
-            if (System.IO.File.Exists(filePath) && Path.GetExtension(filePath).ToUpper() == ".SNTL")
+            if (File.Exists(filePath) && Path.GetExtension(filePath).ToUpper() == ".SNTL")
             {
                 var sessionManager = ServiceLocator.Instance.Get<ISessionManager>();
 
@@ -658,7 +662,7 @@ namespace Sentinel.Controls
         {
             // Append version number to caption (to save effort of producing an about screen)
             Title = string.Format("{0} ({1}) {2}", Assembly.GetExecutingAssembly().GetName().Name, Assembly.GetExecutingAssembly().GetName().Version, ServiceLocator.Instance.Get<ISessionManager>().Name);
-            
+
             Preferences = ServiceLocator.Instance.Get<IUserPreferences>();
             ViewManager = ServiceLocator.Instance.Get<IViewManager>();
 
@@ -672,10 +676,10 @@ namespace Sentinel.Controls
             DataContext = this;
 
             // When a new item is added, select the newest one.
-            ViewManager.Viewers.CollectionChanged += ViewManagerChanged;         
+            ViewManager.Viewers.CollectionChanged += ViewManagerChanged;
 
             //View-specific bindings
-            var collapseIfZero = new WpfExtras.Converters.CollapseIfZeroConverter();
+            var collapseIfZero = new CollapseIfZeroConverter();
 
             var standardHighlighters = new CollectionViewSource() { Source = Highlighters.Highlighters };
             standardHighlighters.View.Filter = c =>
@@ -683,7 +687,7 @@ namespace Sentinel.Controls
                 if (c is IStandardDebuggingHighlighter) return true;
                 return false;
             };
-                        
+
             var customHighlighters = new CollectionViewSource() { Source = Highlighters.Highlighters };
             customHighlighters.View.Filter = c =>
             {
@@ -700,7 +704,7 @@ namespace Sentinel.Controls
             {
                 Source = standardHighlighters
             });
-            StandardHighlighterRibbonGroupOnTab.SetBinding(RibbonGroup.VisibilityProperty, new Binding()
+            StandardHighlighterRibbonGroupOnTab.SetBinding(VisibilityProperty, new Binding()
             {
                 Source = standardHighlighters,
                 Path = new PropertyPath("Count"),
@@ -710,7 +714,7 @@ namespace Sentinel.Controls
             {
                 Source = customHighlighters
             });
-            CustomHighlighterRibbonGroupOnTab.SetBinding(RibbonGroup.VisibilityProperty, new Binding()
+            CustomHighlighterRibbonGroupOnTab.SetBinding(VisibilityProperty, new Binding()
             {
                 Source = customHighlighters,
                 Path = new PropertyPath("Count"),
@@ -732,15 +736,15 @@ namespace Sentinel.Controls
 
             StandardFiltersRibbonGroup.SetBinding(RibbonGroup.ItemsSourceProperty, new Binding()
             {
-                Source = standardFilters               
+                Source = standardFilters
             });
-            
+
             StandardFiltersRibbonGroupOnTab.SetBinding(RibbonGroup.ItemsSourceProperty, new Binding()
             {
                 Source = standardFilters
             });
-            
-            StandardFiltersRibbonGroupOnTab.SetBinding(RibbonGroup.VisibilityProperty, new Binding()
+
+            StandardFiltersRibbonGroupOnTab.SetBinding(VisibilityProperty, new Binding()
             {
                 Source = standardFilters,
                 Path = new PropertyPath("Count"),
@@ -750,7 +754,7 @@ namespace Sentinel.Controls
             {
                 Source = customFilters
             });
-            CustomFiltersRibbonGroupOnTab.SetBinding(RibbonGroup.VisibilityProperty, new Binding()
+            CustomFiltersRibbonGroupOnTab.SetBinding(VisibilityProperty, new Binding()
             {
                 Source = customFilters,
                 Path = new PropertyPath("Count"),
@@ -797,13 +801,13 @@ namespace Sentinel.Controls
             ExceptionRibbonToggleButton.SetBinding(RibbonToggleButton.IsCheckedProperty, new Binding()
             {
                 Source = Preferences,
-                 Path = new PropertyPath("ShowExceptionColumn")
+                Path = new PropertyPath("ShowExceptionColumn")
             });
             ThreadRibbonToggleButton.SetBinding(RibbonToggleButton.IsCheckedProperty, new Binding()
             {
                 Source = Preferences,
                 Path = new PropertyPath("ShowThreadColumn")
             });
-        }       
+        }
     }
 }

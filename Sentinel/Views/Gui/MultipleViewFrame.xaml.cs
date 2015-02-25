@@ -32,7 +32,7 @@ namespace Sentinel.Views.Gui
 {
     using System.Diagnostics;
 
-    using Sentinel.Filters;
+    using Filters;
 
     /// <summary>
     /// Interaction logic for MultipleViewFrame.xaml

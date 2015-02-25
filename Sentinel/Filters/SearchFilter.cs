@@ -2,7 +2,7 @@
 {
     #region Using directives
 
-    using Sentinel.Filters.Interfaces;
+    using Interfaces;
     using Sentinel.Interfaces;
     using System;
     using System.Collections.Generic;

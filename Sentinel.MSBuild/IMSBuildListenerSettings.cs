@@ -1,6 +1,6 @@
 namespace Sentinel.MSBuild
 {
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     public interface IMSBuildListenerSettings : IProviderSettings
     {

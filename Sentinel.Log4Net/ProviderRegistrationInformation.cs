@@ -2,7 +2,7 @@ namespace Sentinel.Log4Net
 {
     using System;
 
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     public class ProviderRegistrationInformation : IProviderRegistrationRecord
     {

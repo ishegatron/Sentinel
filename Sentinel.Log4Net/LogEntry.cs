@@ -3,7 +3,7 @@ namespace Sentinel.Log4Net
     using System;
     using System.Collections.Generic;
 
-    using Sentinel.Interfaces;
+    using Interfaces;
 
     internal class LogEntry : ILogEntry
     {

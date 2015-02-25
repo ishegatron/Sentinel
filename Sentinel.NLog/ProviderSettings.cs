@@ -1,6 +1,6 @@
 ﻿namespace Sentinel.NLog
 {
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
     using System.Runtime.Serialization;
 
     [DataContract]

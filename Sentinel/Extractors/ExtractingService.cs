@@ -89,9 +89,9 @@ namespace Sentinel.Extractors
 
         #region IExtractingService Members
 
-        public System.Collections.ObjectModel.ObservableCollection<T> Extractors { get; set; }
+        public ObservableCollection<T> Extractors { get; set; }
 
-        public System.Collections.ObjectModel.ObservableCollection<T> SearchExtractors { get; set; }
+        public ObservableCollection<T> SearchExtractors { get; set; }
 
         public bool IsFiltered(ILogEntry entry)
         {

@@ -6,7 +6,7 @@ namespace Sentinel.Support.Converters
 
     using Common.Logging;
 
-    using Sentinel.Interfaces;
+    using Interfaces;
 
     public class MessageHasExceptionMetadataConverter : IValueConverter
     {

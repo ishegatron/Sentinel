@@ -19,8 +19,8 @@ using Sentinel.Views.Interfaces;
 
 namespace Sentinel.Views.Gui
 {
-    using Sentinel.Filters;
-    using Sentinel.Extractors.Interfaces;
+    using Filters;
+    using Extractors.Interfaces;
 
     public class LogMessages
         : ViewModelBase

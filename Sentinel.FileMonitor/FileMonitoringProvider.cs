@@ -10,8 +10,8 @@
     using System.Text.RegularExpressions;
     using System.Threading;
 
-    using Sentinel.Interfaces;
-    using Sentinel.Interfaces.Providers;
+    using Interfaces;
+    using Interfaces.Providers;
 
     public class FileMonitoringProvider : ILogProvider
     {

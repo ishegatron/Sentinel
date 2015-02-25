@@ -332,7 +332,7 @@ namespace Sentinel.Images
                     Image = i;
 
                     // Some santity checking.
-                    this.imageError = i.Width <= 128 && i.Height <= 128 ? ImageError.NoError : ImageError.TooLarge;
+                    imageError = i.Width <= 128 && i.Height <= 128 ? ImageError.NoError : ImageError.TooLarge;
                 }
                 else
                 {

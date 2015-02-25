@@ -12,10 +12,10 @@ namespace Sentinel.Highlighters.Gui
     using System.Windows;
     using System.Windows.Media;
 
-    using Sentinel.Highlighters.Interfaces;
+    using Interfaces;
     using Sentinel.Interfaces;
-    using Sentinel.Services;
-    using Sentinel.Support.Converters;
+    using Services;
+    using Support.Converters;
 
     public class AddNewHighlighterService : IAddHighlighterService
     {

@@ -5,7 +5,7 @@ namespace Sentinel.MSBuild
 
     using Newtonsoft.Json.Linq;
 
-    using Sentinel.Interfaces;
+    using Interfaces;
 
     internal class LogEntry : ILogEntry
     {

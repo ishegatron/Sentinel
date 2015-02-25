@@ -1,4 +1,6 @@
-﻿namespace Sentinel.NLog
+﻿using System.Windows;
+
+namespace Sentinel.NLog
 {
     using System;
     using System.Collections.ObjectModel;
@@ -6,7 +8,7 @@
     using System.Diagnostics;
     using System.Windows.Controls;
 
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     using WpfExtras;
 
@@ -175,7 +177,7 @@
 
         #endregion
 
-        private void OnLoaded(object sender, System.Windows.RoutedEventArgs e)
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
             // Establish default selection
             Debug.Assert(SupportsUdp || SupportsTcp, "The provider needs to support at least one of UDP or TCP");

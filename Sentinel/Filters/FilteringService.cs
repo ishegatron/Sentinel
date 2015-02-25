@@ -16,11 +16,11 @@ namespace Sentinel.Filters
     using System.Runtime.Serialization;
     using System.Windows.Input;
 
-    using Sentinel.Filters.Gui;
-    using Sentinel.Filters.Interfaces;
+    using Gui;
+    using Interfaces;
     using Sentinel.Interfaces;
-    using Sentinel.Services;
-    using Sentinel.Support.Mvvm;
+    using Services;
+    using Support.Mvvm;
 
     [DataContract]
     public class FilteringService<T> : ViewModelBase, IFilteringService<T>, IDefaultInitialisation

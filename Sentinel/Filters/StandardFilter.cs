@@ -1,6 +1,6 @@
 namespace Sentinel.Filters
 {
-    using Sentinel.Filters.Interfaces;
+    using Interfaces;
     using Sentinel.Interfaces;
 
     public class StandardFilter : Filter, IStandardDebuggingFilter

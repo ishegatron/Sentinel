@@ -11,9 +11,9 @@ namespace Sentinel.Highlighters
     using System.Runtime.Serialization;
     using System.Text.RegularExpressions;
 
-    using Sentinel.Highlighters.Interfaces;
+    using Interfaces;
     using Sentinel.Interfaces;
-    using Sentinel.Support.Mvvm;
+    using Support.Mvvm;
 
     [DataContract]
     public class Highlighter : ViewModelBase, IHighlighter

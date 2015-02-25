@@ -3,7 +3,7 @@ namespace Sentinel.MSBuild
     using System;
     using System.Diagnostics.CodeAnalysis;
 
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     public class ProviderRegistrationInformation : IProviderRegistrationRecord
     {

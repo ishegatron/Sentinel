@@ -1,6 +1,6 @@
 ﻿namespace Sentinel.FileMonitor
 {
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     public interface IFileMonitoringProviderSettings : IProviderSettings
     {

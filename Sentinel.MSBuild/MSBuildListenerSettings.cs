@@ -1,12 +1,12 @@
 namespace Sentinel.MSBuild
 {
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     public class MSBuildListenerSettings : IMSBuildListenerSettings
     {
         public MSBuildListenerSettings(IProviderSettings providerSettings)
         {
-            this.ProviderSettings = providerSettings;
+            ProviderSettings = providerSettings;
         }
 
         public string Name

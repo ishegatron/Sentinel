@@ -9,6 +9,8 @@
 
 #region Using directives
 
+using System.Net.Sockets;
+using System.Runtime.ExceptionServices;
 using System.Windows;
 using Sentinel.Classification;
 using Sentinel.Classification.Interfaces;
@@ -61,9 +63,9 @@ namespace Sentinel
             ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
-        private void FirstChanceExceptionHandler(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
+        private void FirstChanceExceptionHandler(object sender, FirstChanceExceptionEventArgs e)
         {
-            if (e.Exception is System.Net.Sockets.SocketException) return;
+            if (e.Exception is SocketException) return;
 
             string errorString = string.Format("Sender: {0} FirstChanceException raised in {1} : Message -- {2} :: InnerException -- {3} :: TargetSite -- {4} :: StackTrace -- {5} :: HelpLink -- {6} ",
                                                     sender,

@@ -6,7 +6,7 @@
     using System.Diagnostics;
     using System.Windows.Controls;
 
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     using WpfExtras;
 

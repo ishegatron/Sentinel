@@ -22,7 +22,7 @@ using Sentinel.Services;
 
 namespace Sentinel.Support.Converters
 {
-    using Sentinel.Images;
+    using Images;
 
     [ValueConversion(typeof(string), typeof(ImageSource))]
     public class TypeToImageConverter : IValueConverter

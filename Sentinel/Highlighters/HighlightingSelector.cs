@@ -16,10 +16,10 @@ namespace Sentinel.Highlighters
     using System.Windows.Controls;
     using System.Windows.Data;
     using System.Windows.Media;
-    using Sentinel.Highlighters.Interfaces;
+    using Interfaces;
     using Sentinel.Interfaces;
-    using Sentinel.Services;
-    using Sentinel.Support.Wpf;
+    using Services;
+    using Support.Wpf;
 
     #endregion
 

@@ -10,9 +10,9 @@ namespace Sentinel.Preferences
     using System.Collections.Generic;
     using System.Runtime.Serialization;
 
-    using Sentinel.Interfaces;
-    using Sentinel.Support.Mvvm;
-    using Sentinel.Support.Wpf;
+    using Interfaces;
+    using Support.Mvvm;
+    using Support.Wpf;
 
     /// <summary>
     /// An implementation of the IUserPreferences which holds all of the user
@@ -177,7 +177,7 @@ namespace Sentinel.Preferences
                 if (showExceptionColumn != value)
                 {
                     showExceptionColumn = value;
-                    this.OnPropertyChanged("ShowExceptionColumn");
+                    OnPropertyChanged("ShowExceptionColumn");
                 }
             }
         }

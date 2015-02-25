@@ -16,7 +16,7 @@ namespace Sentinel.Highlighters
     using System.Runtime.Serialization;
     using System.Windows.Media;
 
-    using Sentinel.Highlighters.Interfaces;
+    using Interfaces;
     using Sentinel.Interfaces;
 
     #endregion

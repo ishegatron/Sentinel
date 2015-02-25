@@ -22,7 +22,7 @@ namespace Sentinel.NLog
             {
                 udpClient = new UdpClient();
                 udpClient.ExclusiveAddressUse = false;
-                udpClient.Client.SetSocketOption(System.Net.Sockets.SocketOptionLevel.Socket, System.Net.Sockets.SocketOptionName.ReuseAddress, true);
+                udpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
                 udpClient.Client.Bind(endPoint);
             }
             else

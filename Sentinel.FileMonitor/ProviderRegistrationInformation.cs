@@ -2,7 +2,7 @@ namespace Sentinel.FileMonitor
 {
     using System;
 
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     public class ProviderRegistrationInformation : IProviderRegistrationRecord
     {
