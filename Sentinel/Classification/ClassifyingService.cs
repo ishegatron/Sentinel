@@ -9,14 +9,12 @@
 
 #region Using directives
 
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 using Sentinel.Classification.Interfaces;
 using Sentinel.Interfaces;
-using Sentinel.Services;
 using Sentinel.Support.Mvvm;
 using System.Runtime.Serialization;
 using System.ComponentModel;

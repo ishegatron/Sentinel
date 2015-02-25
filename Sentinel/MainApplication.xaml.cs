@@ -12,28 +12,8 @@
 using System.Net.Sockets;
 using System.Runtime.ExceptionServices;
 using System.Windows;
-using Sentinel.Classification;
-using Sentinel.Classification.Interfaces;
-using Sentinel.Filters;
-using Sentinel.Filters.Interfaces;
-using Sentinel.Highlighters;
-using Sentinel.Highlighters.Interfaces;
-using Sentinel.Images;
-using Sentinel.Images.Interfaces;
-using Sentinel.Interfaces;
-using Sentinel.Logger;
-using Sentinel.Logs;
-using Sentinel.Logs.Interfaces;
-using Sentinel.Preferences;
 using Sentinel.Properties;
-using Sentinel.Providers;
-using Sentinel.Providers.Interfaces;
 using Sentinel.Services;
-using Sentinel.Views;
-using Sentinel.Views.Gui;
-using Sentinel.Views.Interfaces;
-using Sentinel.Extractors.Interfaces;
-using Sentinel.Extractors;
 using Sentinel.Services.Interfaces;
 using System;
 
@@ -76,16 +56,7 @@ namespace Sentinel
                                                     (e.Exception.StackTrace != null) ? e.Exception.StackTrace : "",
                                                     (e.Exception.HelpLink != null) ? e.Exception.HelpLink : "");
 
-            MessageBox.Show(errorString, "Error " + e.Exception.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
-        }
-
-        /// <summary>
-        /// Override of the <c>Application.OnExit</c> method.
-        /// </summary>
-        /// <param name="e">Exit event arguments.</param>
-        protected override void OnExit(ExitEventArgs e)
-        {          
-            base.OnExit(e);
+            MessageBox.Show(errorString, "Error " + e.Exception.GetType(), MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
         }
     }
 }

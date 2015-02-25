@@ -19,7 +19,6 @@ namespace Sentinel.Services
 
     using Sentinel.Interfaces;
     using Support;
-    using System.Text;
 
     public class ServiceLocator
     {

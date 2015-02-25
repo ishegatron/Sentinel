@@ -9,7 +9,6 @@
 
 #region Using directives
 
-using System.Collections.Generic;
 using System.Windows;
 using Sentinel.Images.Controls;
 using Sentinel.Images.Interfaces;

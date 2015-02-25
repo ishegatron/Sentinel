@@ -18,22 +18,14 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Sentinel.Filters.Interfaces;
-using Sentinel.Highlighters.Interfaces;
 using Sentinel.Interfaces;
-using Sentinel.Logs.Interfaces;
 using Sentinel.Services;
-using Sentinel.Support.Wpf;
 using Sentinel.Views.Interfaces;
 
 #endregion
 
 namespace Sentinel.Views.Gui
 {
-    using System.Diagnostics;
-
-    using Filters;
-
     /// <summary>
     /// Interaction logic for MultipleViewFrame.xaml
     /// </summary>

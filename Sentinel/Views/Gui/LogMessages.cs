@@ -10,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using Sentinel.Filters.Interfaces;
 using Sentinel.Interfaces;
-using Sentinel.Logs.Interfaces;
 using Sentinel.Services;
 using Sentinel.Support.Mvvm;
 using Sentinel.Views.Interfaces;
@@ -19,7 +18,6 @@ using Sentinel.Views.Interfaces;
 
 namespace Sentinel.Views.Gui
 {
-    using Filters;
     using Extractors.Interfaces;
 
     public class LogMessages

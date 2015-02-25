@@ -9,7 +9,6 @@ namespace Sentinel.Highlighters.Interfaces
 {
     #region Using directives
 
-    using System.Collections;
     using System.Collections.Generic;
 
     using Sentinel.Interfaces;

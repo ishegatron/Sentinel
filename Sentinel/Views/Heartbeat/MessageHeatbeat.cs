@@ -8,7 +8,6 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using Sentinel.Interfaces;
-using Sentinel.Logs.Interfaces;
 using Sentinel.Support.Mvvm;
 using Sentinel.Support.Wpf;
 using Sentinel.Views.Interfaces;

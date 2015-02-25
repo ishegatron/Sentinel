@@ -1,5 +1,4 @@
-﻿using System;
-using Sentinel.Views.Interfaces;
+﻿using Sentinel.Views.Interfaces;
 
 namespace Sentinel.Views.Gui
 {

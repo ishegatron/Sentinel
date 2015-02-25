@@ -29,17 +29,11 @@ namespace Sentinel.Controls
     using Filters.Interfaces;
     using Highlighters.Interfaces;
     using Interfaces;
-    using Interfaces.Providers;
-    using Log4Net;
-    using Logs.Gui;
     using Logs.Interfaces;
-    using NLog;
-    using Providers;
     using Providers.Interfaces;
     using Services;
     using Support;
     using Support.Mvvm;
-    using Views.Gui;
     using Views.Interfaces;
     using System.Windows.Controls.Ribbon;
     using Extractors.Interfaces;

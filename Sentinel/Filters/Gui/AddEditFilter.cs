@@ -10,7 +10,6 @@
 #region Using directives
 
 using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using Sentinel.Support.Mvvm;

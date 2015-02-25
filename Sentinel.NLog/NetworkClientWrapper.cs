@@ -5,7 +5,6 @@ namespace Sentinel.NLog
     using System.Linq;
     using System.Net;
     using System.Net.Sockets;
-    using System.Threading;
 
     public class NetworkClientWrapper : IDisposable
     {

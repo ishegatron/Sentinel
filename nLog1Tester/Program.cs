@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace nLog1Tester
+﻿namespace nLog1Tester
 {
     using System;
     using System.Threading;

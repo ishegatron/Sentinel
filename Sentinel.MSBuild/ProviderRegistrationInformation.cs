@@ -1,8 +1,6 @@
 namespace Sentinel.MSBuild
 {
     using System;
-    using System.Diagnostics.CodeAnalysis;
-
     using Interfaces.Providers;
 
     public class ProviderRegistrationInformation : IProviderRegistrationRecord

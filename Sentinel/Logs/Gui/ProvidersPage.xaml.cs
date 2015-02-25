@@ -16,7 +16,6 @@ namespace Sentinel.Logs.Gui
 
     using Sentinel.Interfaces.Providers;
     using NLog;
-    using Providers;
     using Providers.Interfaces;
     using Services;
 

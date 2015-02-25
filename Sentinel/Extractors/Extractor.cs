@@ -1,14 +1,9 @@
 ﻿using Sentinel.Extractors.Interfaces;
 using Sentinel.Interfaces;
 using Sentinel.Support.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Sentinel.Extractors
 {

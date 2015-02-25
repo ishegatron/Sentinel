@@ -11,7 +11,6 @@
 
 using System.Collections.Generic;
 using System.Windows.Controls;
-using Sentinel.Logs.Interfaces;
 
 #endregion
 
