@@ -1,7 +1,7 @@
 # Sentinel
 A fork of the original Sentinel project by Ray Hayes (http://sentinel.codeplex.com)
 
-Sentinel is a log viewer (implemented in WPF) with configurable filtering, extracting, and highlighting (foreground/background colours). Custom classifiers allow messages to be parsed and recomposed prior to display.
+Sentinel is a log viewer (implemented in WPF) with configurable filtering, extracting, and highlighting (foreground/background colours) with support for NLog, Log4Net and other log files. Custom classifiers allow messages to be parsed and recomposed prior to display.
 
 ![alt text](http://ishegatron.github.io/Sentinel/images/SentinelScreenshot.jpg "Sentinel log viewer")
 
