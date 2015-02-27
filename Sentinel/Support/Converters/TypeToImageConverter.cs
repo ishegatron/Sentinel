@@ -11,7 +11,6 @@
 
 using System;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -22,7 +21,7 @@ using Sentinel.Services;
 
 namespace Sentinel.Support.Converters
 {
-    using Sentinel.Images;
+    using Images;
 
     [ValueConversion(typeof(string), typeof(ImageSource))]
     public class TypeToImageConverter : IValueConverter

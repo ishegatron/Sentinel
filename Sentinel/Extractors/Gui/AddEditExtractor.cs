@@ -1,7 +1,6 @@
 ﻿using Sentinel.Interfaces;
 using Sentinel.Support.Mvvm;
 using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 

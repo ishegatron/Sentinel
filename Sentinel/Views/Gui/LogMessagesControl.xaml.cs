@@ -9,14 +9,12 @@
 
 #region Using directives
 
-using System;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Sentinel.Highlighters;
 using Sentinel.Highlighters.Interfaces;
 using Sentinel.Interfaces;
-using Sentinel.Logs.Interfaces;
 using Sentinel.Services;
 using Sentinel.Support;
 using Sentinel.Support.Wpf;

@@ -1,8 +1,5 @@
 ﻿using Sentinel.Extractors.Interfaces;
-using Sentinel.Interfaces;
 using Sentinel.Services;
-using Sentinel.Support.Converters;
-using System.Linq;
 using System.Windows;
 
 namespace Sentinel.Extractors.Gui

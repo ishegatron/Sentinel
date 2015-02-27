@@ -10,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using Sentinel.Filters.Interfaces;
 using Sentinel.Interfaces;
-using Sentinel.Logs.Interfaces;
 using Sentinel.Services;
 using Sentinel.Support.Mvvm;
 using Sentinel.Views.Interfaces;
@@ -19,8 +18,7 @@ using Sentinel.Views.Interfaces;
 
 namespace Sentinel.Views.Gui
 {
-    using Sentinel.Filters;
-    using Sentinel.Extractors.Interfaces;
+    using Extractors.Interfaces;
 
     public class LogMessages
         : ViewModelBase

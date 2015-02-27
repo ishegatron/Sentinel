@@ -6,12 +6,12 @@
     using System.Diagnostics;
     using System.Linq;
 
-    using Sentinel.FileMonitor;
+    using FileMonitor;
     using Sentinel.Interfaces.Providers;
-    using Sentinel.Log4Net;
-    using Sentinel.MSBuild;
-    using Sentinel.NLog;
-    using Sentinel.Providers.Interfaces;
+    using Log4Net;
+    using MSBuild;
+    using NLog;
+    using Interfaces;
 
     public class ProviderManager : IProviderManager
     {

@@ -50,7 +50,7 @@ namespace Sentinel.Support.Mvvm
 
         public bool CanExecute(object parameter)
         {
-            return canExecute == null ? true : canExecute.Invoke(parameter);
+            return canExecute == null || canExecute.Invoke(parameter);
         }
 
         public void Execute(object parameter)

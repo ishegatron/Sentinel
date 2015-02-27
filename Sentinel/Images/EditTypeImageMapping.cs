@@ -1,7 +1,6 @@
 using Sentinel.Images.Controls;
 using Sentinel.Images.Interfaces;
 using Sentinel.Services;
-using System;
 using System.Diagnostics;
 using System.Windows;
 

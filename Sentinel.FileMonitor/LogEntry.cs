@@ -3,7 +3,7 @@ namespace Sentinel.FileMonitor
     using System;
     using System.Collections.Generic;
 
-    using Sentinel.Interfaces;
+    using Interfaces;
 
     internal class LogEntry : ILogEntry
     {

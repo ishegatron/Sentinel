@@ -12,7 +12,7 @@
 
     using Microsoft.Win32;
 
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     using WpfExtras;
 

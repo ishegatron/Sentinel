@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Sentinel.Views.Interfaces
+﻿namespace Sentinel.Views.Interfaces
 {
     public interface IViewInformation
     {

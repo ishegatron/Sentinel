@@ -1,6 +1,6 @@
 ﻿namespace Sentinel.Highlighters
 {
-    using Sentinel.Highlighters.Interfaces;
+    using Interfaces;
     using Sentinel.Interfaces;
 
     public class StandardHighlighter : Highlighter, IStandardDebuggingHighlighter

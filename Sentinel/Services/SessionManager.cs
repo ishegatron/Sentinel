@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.ComponentModel;
+using Newtonsoft.Json.Linq;
 using Sentinel.Classification;
 using Sentinel.Classification.Interfaces;
 using Sentinel.Extractors;
@@ -320,7 +321,7 @@ namespace Sentinel.Services
             _serviceLocatorIsFresh = true;
         }
 
-        private void ViewModelProperty_Changed(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void ViewModelProperty_Changed(object sender, PropertyChangedEventArgs e)
         {
             IsSaved = false;
             _serviceLocatorIsFresh = false;

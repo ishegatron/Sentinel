@@ -3,8 +3,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using Sentinel.Logs.Interfaces;
+using Sentinel.Services;
 using WpfExtras;
 
 namespace Sentinel.Logs.Gui
@@ -21,7 +23,7 @@ namespace Sentinel.Logs.Gui
         private string logName = "Untitled";
         private bool isValid;
         
-        private readonly ILogManager logManager = Services.ServiceLocator.Instance.Get<ILogManager>();
+        private readonly ILogManager logManager = ServiceLocator.Instance.Get<ILogManager>();
 
         public SetLoggerNamePage()
         {
@@ -186,7 +188,7 @@ namespace Sentinel.Logs.Gui
 
         #endregion
 
-        private void PageLoaded(object sender, System.Windows.RoutedEventArgs e)
+        private void PageLoaded(object sender, RoutedEventArgs e)
         {
             OnPropertyChanged("LogName");
         }

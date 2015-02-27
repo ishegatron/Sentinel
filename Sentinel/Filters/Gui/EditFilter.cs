@@ -10,11 +10,8 @@
 #region Using directives
 
 using System.Diagnostics;
-using System.Linq;
 using System.Windows;
 using Sentinel.Filters.Interfaces;
-using Sentinel.Interfaces;
-using Sentinel.Support.Converters;
 
 #endregion
 

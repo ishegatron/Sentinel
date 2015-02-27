@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using NLog;
 
 namespace NLog3Tester
 {
@@ -11,7 +8,7 @@ namespace NLog3Tester
 
     class Program
     {
-        private static readonly NLog.Logger log = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly Logger log = LogManager.GetCurrentClassLogger();
 
         private static readonly Random random = new Random();
 

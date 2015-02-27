@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Sentinel.Logs.Interfaces;
 
 namespace Sentinel.Views.Interfaces
 {

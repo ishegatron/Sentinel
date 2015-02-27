@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using NLog;
 
 namespace NLogTester
 {
@@ -7,7 +8,7 @@ namespace NLogTester
 
     class Program
     {
-        private static readonly NLog.Logger log = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly Logger log = LogManager.GetCurrentClassLogger();
 
         private static readonly Random random = new Random();
 

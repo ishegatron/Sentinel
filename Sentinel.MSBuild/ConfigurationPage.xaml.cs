@@ -1,11 +1,13 @@
-﻿namespace Sentinel.MSBuild
+﻿using System.Windows;
+
+namespace Sentinel.MSBuild
 {
     using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.Diagnostics;
     using System.Windows.Controls;
 
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     using WpfExtras;
 
@@ -133,7 +135,7 @@
             }
         }
 
-        private void OnLoaded(object sender, System.Windows.RoutedEventArgs e)
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
         }
 

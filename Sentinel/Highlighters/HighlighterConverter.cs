@@ -14,7 +14,7 @@ namespace Sentinel.Highlighters
     using System.Globalization;
     using System.Windows.Data;
 
-    using Sentinel.Highlighters.Interfaces;
+    using Interfaces;
     using Sentinel.Interfaces;
 
     #endregion

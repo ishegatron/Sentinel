@@ -1,6 +1,6 @@
 namespace Sentinel.Log4Net
 {
-    using Sentinel.Interfaces.Providers;
+    using Interfaces.Providers;
 
     public class UdpAppenderSettings : IUdpAppenderListenerSettings
     {

@@ -13,8 +13,8 @@ namespace Sentinel.MSBuild
 
     using Newtonsoft.Json.Linq;
 
-    using Sentinel.Interfaces;
-    using Sentinel.Interfaces.Providers;
+    using Interfaces;
+    using Interfaces.Providers;
 
     public class MSBuildProvider : INetworkProvider
     {

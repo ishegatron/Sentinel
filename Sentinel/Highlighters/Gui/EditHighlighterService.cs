@@ -10,11 +10,9 @@
 #region Using directives
 
 using System.Diagnostics;
-using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using Sentinel.Highlighters.Interfaces;
-using Sentinel.Interfaces;
 
 #endregion
 

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace Sentinel.Support.Converters
@@ -11,7 +9,7 @@ namespace Sentinel.Support.Converters
     [ValueConversion(typeof(string), typeof(string))]
     public class LongPathToShortPathConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var valueString = (string)value;
             var pathParts = valueString.Split(Path.DirectorySeparatorChar);
@@ -31,7 +29,7 @@ namespace Sentinel.Support.Converters
             }            
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

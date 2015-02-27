@@ -15,7 +15,7 @@ namespace Sentinel.Highlighters
     using Newtonsoft.Json;
 
     using Sentinel.Interfaces;
-    using Sentinel.Support.Mvvm;
+    using Support.Mvvm;
 
     [DataContract]
     public class HighlighterStyle 

@@ -7,15 +7,11 @@
 
 namespace Sentinel.Highlighters.Gui
 {
-    using System.Diagnostics;
-    using System.Linq;
     using System.Windows;
     using System.Windows.Media;
 
-    using Sentinel.Highlighters.Interfaces;
-    using Sentinel.Interfaces;
-    using Sentinel.Services;
-    using Sentinel.Support.Converters;
+    using Interfaces;
+    using Services;
 
     public class AddNewHighlighterService : IAddHighlighterService
     {

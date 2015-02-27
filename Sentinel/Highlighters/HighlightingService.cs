@@ -15,10 +15,10 @@ namespace Sentinel.Highlighters
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using Sentinel.Highlighters.Gui;
-    using Sentinel.Highlighters.Interfaces;
+    using Gui;
+    using Interfaces;
     using Sentinel.Interfaces;
-    using Sentinel.Support.Mvvm;
+    using Support.Mvvm;
 
     [DataContract]
     public class HighlightingService<T> : ViewModelBase, IHighlightingService<T>, IDefaultInitialisation
@@ -150,7 +150,7 @@ namespace Sentinel.Highlighters
         private void EditHighligter(object obj)
         {
             IEditHighlighterService editService = new EditHighlighterService();
-            var highlighter = this.Highlighters.ElementAt(this.SelectedIndex);
+            var highlighter = Highlighters.ElementAt(SelectedIndex);
             if (highlighter != null)
             {
                 editService.Edit(highlighter);
@@ -208,7 +208,7 @@ namespace Sentinel.Highlighters
         private void RemoveHighlighter(object obj)
         {
             IRemoveHighlighterService service = new RemoveHighlighterService();
-            var highlighter = this.Highlighters.ElementAt(this.SelectedIndex);
+            var highlighter = Highlighters.ElementAt(SelectedIndex);
 
             Debug.Assert(highlighter != null, "Should not be able to run this if no highlighter is selected!");
 

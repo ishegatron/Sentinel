@@ -9,29 +9,11 @@
 
 #region Using directives
 
+using System.Net.Sockets;
+using System.Runtime.ExceptionServices;
 using System.Windows;
-using Sentinel.Classification;
-using Sentinel.Classification.Interfaces;
-using Sentinel.Filters;
-using Sentinel.Filters.Interfaces;
-using Sentinel.Highlighters;
-using Sentinel.Highlighters.Interfaces;
-using Sentinel.Images;
-using Sentinel.Images.Interfaces;
-using Sentinel.Interfaces;
-using Sentinel.Logger;
-using Sentinel.Logs;
-using Sentinel.Logs.Interfaces;
-using Sentinel.Preferences;
 using Sentinel.Properties;
-using Sentinel.Providers;
-using Sentinel.Providers.Interfaces;
 using Sentinel.Services;
-using Sentinel.Views;
-using Sentinel.Views.Gui;
-using Sentinel.Views.Interfaces;
-using Sentinel.Extractors.Interfaces;
-using Sentinel.Extractors;
 using Sentinel.Services.Interfaces;
 using System;
 
@@ -61,9 +43,9 @@ namespace Sentinel
             ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
-        private void FirstChanceExceptionHandler(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
+        private void FirstChanceExceptionHandler(object sender, FirstChanceExceptionEventArgs e)
         {
-            if (e.Exception is System.Net.Sockets.SocketException) return;
+            if (e.Exception is SocketException) return;
 
             string errorString = string.Format("Sender: {0} FirstChanceException raised in {1} : Message -- {2} :: InnerException -- {3} :: TargetSite -- {4} :: StackTrace -- {5} :: HelpLink -- {6} ",
                                                     sender,
@@ -74,16 +56,7 @@ namespace Sentinel
                                                     (e.Exception.StackTrace != null) ? e.Exception.StackTrace : "",
                                                     (e.Exception.HelpLink != null) ? e.Exception.HelpLink : "");
 
-            MessageBox.Show(errorString, "Error " + e.Exception.GetType().ToString(), MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
-        }
-
-        /// <summary>
-        /// Override of the <c>Application.OnExit</c> method.
-        /// </summary>
-        /// <param name="e">Exit event arguments.</param>
-        protected override void OnExit(ExitEventArgs e)
-        {          
-            base.OnExit(e);
+            MessageBox.Show(errorString, "Error " + e.Exception.GetType(), MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK);
         }
     }
 }

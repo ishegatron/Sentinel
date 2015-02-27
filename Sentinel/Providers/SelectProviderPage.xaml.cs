@@ -10,8 +10,8 @@
     using Common.Logging;
 
     using Sentinel.Interfaces.Providers;
-    using Sentinel.Providers.Interfaces;
-    using Sentinel.Services;
+    using Interfaces;
+    using Services;
 
     using WpfExtras;
 

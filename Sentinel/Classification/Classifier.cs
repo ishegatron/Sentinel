@@ -1,17 +1,9 @@
 ﻿using Sentinel.Classification.Interfaces;
-using Sentinel.Images;
-using Sentinel.Images.Interfaces;
 using Sentinel.Interfaces;
-using Sentinel.Services;
 using Sentinel.Support.Mvvm;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Sentinel.Classification
 {

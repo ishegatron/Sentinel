@@ -9,10 +9,10 @@
 
 #region Using directives
 
-using System.Collections.Generic;
 using System.Windows;
 using Sentinel.Images.Controls;
 using Sentinel.Images.Interfaces;
+using Sentinel.Services;
 using Sentinel.Support.Mvvm;
 using System;
 
@@ -40,7 +40,7 @@ namespace Sentinel.Images
             {
                 addImageWindow = new AddImageWindow { DataContext = this, Owner = Application.Current.MainWindow };
 
-                var imageService = Services.ServiceLocator.Instance.Get<ITypeImageService>();
+                var imageService = ServiceLocator.Instance.Get<ITypeImageService>();
                 var data = new AddEditTypeImageViewModel(addImageWindow, imageService, true);
                 var dialogResult = addImageWindow.ShowDialog();
 
