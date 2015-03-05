@@ -32,7 +32,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Windows;
 
 namespace Sentinel.Services
@@ -40,7 +39,7 @@ namespace Sentinel.Services
     [DataContract]
     public class SessionManager : ISessionManager
     {
-        private static char OBJECT_SEPARATOR = '~';
+        private const char ObjectSeparator = '~';
         private bool _serviceLocatorIsFresh;
 
         public SessionManager()
@@ -76,9 +75,7 @@ namespace Sentinel.Services
             var wizard = new NewLoggerWizard();
 
             if (!wizard.Display(parent))
-            {                
                 return;
-            }
 
             var settings = wizard.Settings;
 
@@ -93,59 +90,38 @@ namespace Sentinel.Services
 
         public void LoadSession(string fileName)
         {
-            try
+            /*var fi = new FileInfo(fileName);
+            File.ReadAllText will already throw FileNotFoundException
+            /*if (!fi.Exists) 
+                throw new FileNotFoundException();
+            
+            using (var fs = fi.OpenRead())
+            using (var sr = new StreamReader(fs))
             {
-                var fi = new FileInfo(fileName);
+                fileText = sr.ReadToEnd();
+            }*/
 
-                if (!fi.Exists) throw new FileNotFoundException();
+            string fileText = File.ReadAllText(fileName);
+            string[] jsonObjects = fileText.Split(ObjectSeparator);
 
-                string asString;
+            CleanUpResources();
+            LoadServiceLocator(jsonObjects);
 
-                using (var fs = fi.OpenRead())
-                {
-                    using (var sr = new StreamReader(fs))
-                    {
-                        asString = sr.ReadToEnd();
-                    }
-                }
-
-                var jsonObjects = asString.Split(OBJECT_SEPARATOR);
-
-                CleanUpResources();
-                LoadServiceLocator(jsonObjects);
-
-                IsSaved = false;
-            }
-            catch (Exception e)
-            {
-                Trace.WriteLine(string.Format("Exception when trying to load session from {0}", fileName));
-                Trace.WriteLine(e.Message);
-            }
+            IsSaved = false;
         }
 
         public void SaveSession(string filePath)
         {
-            var stringToSave = new StringBuilder();
-            var services = ServiceLocator.Instance.RegisteredServices;
-            foreach (var value in services)
+            using (var writer = File.CreateText(filePath))
             {
-                if (value == null)
-                {
-                    Trace.TraceError("Unexpected null");
-                    continue;
-                }
+                var values = ServiceLocator.Instance.RegisteredServices
+                    .Where(value => value.HasAttribute<DataContractAttribute>());
 
-                if (value.HasAttribute<DataContractAttribute>())
+                foreach (object value in values)
                 {
-                    stringToSave.AppendLine(JsonHelper.SerializeToString(value));
-                    stringToSave.AppendLine(OBJECT_SEPARATOR.ToString()); //Object separator?
+                    writer.WriteLine(JsonHelper.SerializeToString(value));
+                    writer.WriteLine(ObjectSeparator); //Object separator?
                 }
-            }
-
-            using (FileStream fs = File.Create(filePath))
-            {
-                byte[] info = new UTF8Encoding(true).GetBytes(stringToSave.ToString());
-                fs.Write(info, 0, info.Length);
             }
 
             IsSaved = true;
@@ -167,7 +143,7 @@ namespace Sentinel.Services
             }
         }
 
-        private void ConfigureLoggerServices(string logName, IEnumerable<string> viewIdentifiers, IEnumerable<PendingProviderRecord> pendingProviderRecords)
+        private static void ConfigureLoggerServices(string logName, IEnumerable<string> viewIdentifiers, IEnumerable<PendingProviderRecord> pendingProviderRecords)
         {
             // Create the logger.
             var logManager = ServiceLocator.Instance.Get<ILogManager>();
@@ -213,7 +189,7 @@ namespace Sentinel.Services
             }
         }
 
-        private void LoadServiceLocator(string[] jsonObjectStrings)
+        private void LoadServiceLocator(IEnumerable<string> jsonObjectStrings)
         {
             if (jsonObjectStrings == null) return;
 
@@ -244,21 +220,20 @@ namespace Sentinel.Services
 
                         var providerSettingsObj = deserializedObj["ProviderSettings"].HasValues ? deserializedObj["ProviderSettings"].Values() : null;
 
-                        if (providerSettingsObj != null)
+                        if (providerSettingsObj == null)
+                            continue;
+
+                        var providerInstances = providerSettingsObj.Last();
+                        foreach (var providerSetting in providerInstances)
                         {
-                            var providerInstances = providerSettingsObj.Last();
-                            foreach (var providerSetting in providerInstances)
+                            if (providerSetting["$type"].ToString().Contains(typeof(NetworkSettings).Name))
                             {
-                                var test = providerSetting.ToString();
-                                if (providerSetting["$type"].ToString().Contains(typeof(NetworkSettings).Name))
+                                var thisSetting = JsonHelper.DeserializeFromString<NetworkSettings>(providerSetting.ToString());
+                                pendingProviderRecords.Add(new PendingProviderRecord()
                                 {
-                                    var thisSetting = JsonHelper.DeserializeFromString<NetworkSettings>(providerSetting.ToString());
-                                    pendingProviderRecords.Add(new PendingProviderRecord()
-                                    {
-                                        Info = thisSetting.Info,
-                                        Settings = thisSetting
-                                    });
-                                }
+                                    Info = thisSetting.Info,
+                                    Settings = thisSetting
+                                });
                             }
                         }
                     }
@@ -272,7 +247,6 @@ namespace Sentinel.Services
             locator.Register<IProviderManager>(new ProviderManager());
             locator.Register<IWindowFrame>(new MultipleViewFrame()); //needs IUserPreferences, IViewManager
             locator.Register<ILogFileExporter>(new LogFileExporter());
-
             locator.Register<INewProviderWizard>(new NewProviderWizard());
 
             // Do this last so that other services have registered, e.g. the
@@ -282,7 +256,7 @@ namespace Sentinel.Services
                 locator.Register(typeof(IClassifyingService<IClassifier>), typeof(ClassifyingService<IClassifier>), true);
             }
 
-            var viewIDs = new List<String>() { locator.Get<IViewManager>().GetRegistered().FirstOrDefault().Identifier };
+            var viewIDs = new List<String> { locator.Get<IViewManager>().GetRegistered().First().Identifier };
 
             ConfigureLoggerServices(Name, viewIDs, pendingProviderRecords);
 

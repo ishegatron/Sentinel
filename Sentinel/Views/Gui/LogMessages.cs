@@ -20,9 +20,7 @@ namespace Sentinel.Views.Gui
 {
     using Extractors.Interfaces;
 
-    public class LogMessages
-        : ViewModelBase
-          , ILogViewer
+    public class LogMessages  : ViewModelBase  , ILogViewer
     {
         private const string ID = "f4d8c068-bf72-4b83-9d4a-1cd8a89fea11";
         
