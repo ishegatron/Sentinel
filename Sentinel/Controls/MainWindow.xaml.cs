@@ -82,14 +82,9 @@ namespace Sentinel.Controls
             var fileName = Path.ChangeExtension(persistingRecentFileName, ".json");
             var recentFileInfo = JsonHelper.DeserializeFromFile<RecentFileInfo>(fileName);
 
-            if (recentFileInfo != null)
-            {
-                _recentFilePathList = recentFileInfo.RecentFilePaths.ToList();
-            }
-            else
-            {
-                _recentFilePathList = new List<string>();
-            }
+            _recentFilePathList = recentFileInfo != null
+                ? recentFileInfo.RecentFilePaths.ToList()
+                : new List<string>();
         }
 
         public ICommand Add { get; private set; }
@@ -263,7 +258,7 @@ namespace Sentinel.Controls
             {
                 var userResult = MessageBox.Show("Do you want to save changes you made to " + sessionManager.Name + "?", "Sentinel", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
                 if (userResult == MessageBoxResult.Cancel) return;
-                else if (userResult == MessageBoxResult.Yes)
+                if (userResult == MessageBoxResult.Yes)
                 {
                     SaveSession.Execute(null);
 
@@ -290,13 +285,15 @@ namespace Sentinel.Controls
             if (!sessionManager.IsSaved)
             {
                 var userResult = MessageBox.Show("Do you want to save changes you made to " + sessionManager.Name + "?", "Sentinel", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
-                if (userResult == MessageBoxResult.Cancel) return;
-                else if (userResult == MessageBoxResult.Yes)
+                if (userResult == MessageBoxResult.Cancel)
+                    return;
+                if (userResult == MessageBoxResult.Yes)
                 {
                     SaveSession.Execute(null);
 
                     // if the user clicked "Cancel" at the save dialog box
-                    if (!sessionManager.IsSaved) return;
+                    if (!sessionManager.IsSaved)
+                        return;
                 }
             }
 
@@ -304,17 +301,24 @@ namespace Sentinel.Controls
             {
                 // Open file dialog
                 //open a save file dialog
-                OpenFileDialog openFile = new OpenFileDialog();
-                openFile.FileName = sessionManager.Name;
-                openFile.DefaultExt = ".sntl";
-                openFile.Filter = "Sentinel session (.sntl)|*.sntl";
-                openFile.FilterIndex = 0;
+                OpenFileDialog openFile = new OpenFileDialog
+                {
+                    FileName = sessionManager.Name,
+                    DefaultExt = ".sntl",
+                    Filter = "Sentinel session (.sntl)|*.sntl",
+                    FilterIndex = 0
+                };
 
-                var result = openFile.ShowDialog(this);
-                if (result == true) fileNameToLoad = openFile.FileName;
-                else return;
+                if ((bool)!openFile.ShowDialog(this))
+                    return;
+
+                fileNameToLoad = openFile.FileName;
             }
-            // Remove the tab control.
+
+            //TODO: can be changed to just clear?
+            //tabControl.Items.Clear();
+
+            // Remove the tab control
             if (tabControl.Items.Count > 0)
             {
                 var tab = tabControl.SelectedItem;
@@ -337,7 +341,6 @@ namespace Sentinel.Controls
             var newTab = new TabItem { Header = sessionManager.Name, Content = frame };
             tabControl.Items.Add(newTab);
             tabControl.SelectedItem = newTab;
-
         }
 
         /// <summary>
@@ -352,6 +355,7 @@ namespace Sentinel.Controls
 
             RemoveBindingReferences();
 
+            //TODO: load latest session?
             sessionManager.LoadNewSession(this);
 
             BindViewToViewModel();
@@ -426,7 +430,7 @@ namespace Sentinel.Controls
 
                 BindViewToViewModel();
 
-                if (sessionManager.ProviderSettings.Count() == 0) return;
+                if (!sessionManager.ProviderSettings.Any()) return;
 
                 var frame = ServiceLocator.Instance.Get<IWindowFrame>();
 
@@ -556,7 +560,7 @@ namespace Sentinel.Controls
         {
             Debug.Assert(sender.GetType() == typeof(RibbonToggleButton), string.Format("A {0} accessed the wrong method", sender.GetType()));
 
-            var button = sender as RibbonToggleButton;
+            var button = (RibbonToggleButton)sender;
 
             switch (button.Label)
             {
@@ -568,8 +572,6 @@ namespace Sentinel.Controls
                     break;
                 case "Extract":
                     BindSearchToSearchExtractor();
-                    break;
-                default:
                     break;
             }
         }
@@ -648,7 +650,7 @@ namespace Sentinel.Controls
 
         private void RemoveBindingReferences()
         {
-            (Preferences as INotifyPropertyChanged).PropertyChanged -= PreferencesChanged;
+            ((INotifyPropertyChanged)Preferences).PropertyChanged -= PreferencesChanged;
             ViewManager.Viewers.CollectionChanged -= ViewManagerChanged;
         }
 

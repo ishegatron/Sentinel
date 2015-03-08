@@ -25,22 +25,18 @@ namespace Sentinel.Logs
 {
     public class Log : ViewModelBase, ILogger
     {
-        private readonly IClassifyingService<IClassifier> classifier;
-
-        private readonly List<ILogEntry> entries = new List<ILogEntry>();
-
-        private readonly List<ILogEntry> newEntries = new List<ILogEntry>();
-
-        private bool enabled = true;
-
-        private string name;
+        private readonly IClassifyingService<IClassifier> _classifier;
+        private readonly List<ILogEntry> _entries = new List<ILogEntry>();
+        private readonly List<ILogEntry> _newEntries = new List<ILogEntry>();
+        private bool _enabled = true;
+        private string _name;
 
         public Log()
         {
-            Entries = entries;
-            NewEntries = newEntries;
+            Entries = _entries;
+            NewEntries = _newEntries;
 
-            classifier = ServiceLocator.Instance.Get<IClassifyingService<IClassifier>>();
+            _classifier = ServiceLocator.Instance.Get<IClassifyingService<IClassifier>>();
 
             // Observe the NewEntries to maintain a full history.
             PropertyChanged += OnPropertyChanged;
@@ -54,13 +50,13 @@ namespace Sentinel.Logs
         {
             get
             {
-                return enabled;
+                return _enabled;
             }
             set
             {
-                if (enabled != value)
+                if (_enabled != value)
                 {
-                    enabled = value;
+                    _enabled = value;
                     OnPropertyChanged("Enabled");
                 }
             }
@@ -70,13 +66,13 @@ namespace Sentinel.Logs
         {
             get
             {
-                return name;
+                return _name;
             }
             set
             {
-                if (value != name)
+                if (value != _name)
                 {
-                    name = value;
+                    _name = value;
                     OnPropertyChanged("Name");
                 }
             }
@@ -86,39 +82,40 @@ namespace Sentinel.Logs
 
         public void Clear()
         {
-            lock (entries)
+            lock (_entries)
             {
-                entries.Clear();
+                _entries.Clear();
             }
 
-            lock (newEntries)
+            lock (_newEntries)
             {
-                newEntries.Clear();
+                _newEntries.Clear();
             }
 
             OnPropertyChanged("Entries");
             OnPropertyChanged("NewEntries");
-            GC.Collect();
+            GC.Collect();// Do we really need to do this?
         }
 
         public void AddBatch(Queue<ILogEntry> entries)
-        {            
-            if (!enabled || entries.Count <= 0) return;
+        {
+            if (!_enabled || entries.Count <= 0)
+                return;
 
             var processed = new Queue<ILogEntry>();
             while (entries.Count > 0)
             {
-                if (classifier != null)
+                if (_classifier != null)
                 {
-                    var entry = classifier.Classify(entries.Dequeue());
+                    var entry = _classifier.Classify(entries.Dequeue());
                     processed.Enqueue(entry);
                 }
             }
 
-            lock (newEntries)
+            lock (_newEntries)
             {
-                newEntries.Clear();
-                newEntries.AddRange(processed);
+                _newEntries.Clear();
+                _newEntries.AddRange(processed);
             }
 
             OnPropertyChanged("NewEntries");
@@ -130,11 +127,11 @@ namespace Sentinel.Logs
         {
             if (e.PropertyName == "NewEntries")
             {
-                lock (newEntries)
+                lock (_newEntries)
                 {
-                    lock (entries)
+                    lock (_entries)
                     {
-                        entries.AddRange(newEntries);
+                        _entries.AddRange(_newEntries);
                     }
 
                     OnPropertyChanged("Entries");

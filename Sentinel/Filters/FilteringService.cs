@@ -118,9 +118,9 @@ namespace Sentinel.Filters
 
         private void CustomFilterPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (sender is Filter)
+            var filter = sender as Filter;
+            if (filter!=null)
             {
-                var filter = sender as Filter;
                 Trace.WriteLine(
                     string.Format(
                         "FilteringService saw some activity on {0} (IsEnabled = {1})", filter.Name, filter.Enabled));

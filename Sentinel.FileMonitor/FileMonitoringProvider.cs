@@ -16,22 +16,15 @@
     public class FileMonitoringProvider : ILogProvider
     {
         public static readonly IProviderRegistrationRecord ProviderRegistrationInformation = new ProviderRegistrationInformation(new ProviderInfo());
+        protected BackgroundWorker PurgeWorker;
 
-        private readonly bool loadExistingContent;
-
-        private readonly Regex patternMatching;
-
-        private readonly Queue<ILogEntry> pendingQueue = new Queue<ILogEntry>();
-
-        private readonly int refreshInterval = 250;
-
-        private readonly List<string> usedGroupNames = new List<string>();
-
-        private long bytesRead;
-
-        protected BackgroundWorker purgeWorker;
-
-        private BackgroundWorker worker;
+        private long _bytesRead;
+        private BackgroundWorker _worker;
+        private readonly bool _loadExistingContent;
+        private readonly Regex _patternMatching;
+        private readonly Queue<ILogEntry> _pendingQueue = new Queue<ILogEntry>();
+        private readonly int _refreshInterval = 250;
+        private readonly List<string> _usedGroupNames = new List<string>();
 
         public FileMonitoringProvider(IProviderSettings settings)
         {
@@ -42,19 +35,20 @@
             var fileSettings = (IFileMonitoringProviderSettings)settings;
             ProviderSettings = fileSettings;
             FileName = fileSettings.FileName;
+            Name = fileSettings.Name;
             Information = settings.Info;
-            refreshInterval = fileSettings.RefreshPeriod;
-            loadExistingContent = fileSettings.LoadExistingContent;
-            patternMatching = new Regex(fileSettings.MessageDecoder, RegexOptions.Singleline | RegexOptions.Compiled);
+            _refreshInterval = fileSettings.RefreshPeriod;
+            _loadExistingContent = fileSettings.LoadExistingContent;
+            _patternMatching = new Regex(fileSettings.MessageDecoder, RegexOptions.Singleline | RegexOptions.Compiled);
 
             PredetermineGroupNames(fileSettings.MessageDecoder);
 
-            worker = new BackgroundWorker();
-            worker.DoWork += DoWork;
-            worker.RunWorkerCompleted += DoWorkComplete;
+            _worker = new BackgroundWorker();
+            _worker.DoWork += DoWork;
+            _worker.RunWorkerCompleted += DoWorkComplete;
 
-            purgeWorker = new BackgroundWorker { WorkerReportsProgress = true };
-            purgeWorker.DoWork += PurgeWorkerDoWork;
+            PurgeWorker = new BackgroundWorker { WorkerReportsProgress = true };
+            PurgeWorker.DoWork += PurgeWorkerDoWork;
         }
 
         public string FileName { get; private set; }
@@ -73,19 +67,19 @@
             Debug.Assert(Logger != null, "No logger has been registered, this is required before starting a provider");
 
             Trace.WriteLine(string.Format("Starting of file-monitor upon {0}", FileName));
-            worker.RunWorkerAsync();
-            purgeWorker.RunWorkerAsync();
+            _worker.RunWorkerAsync();
+            PurgeWorker.RunWorkerAsync();
         }
 
         public void Close()
         {
-            worker.CancelAsync();
-            purgeWorker.CancelAsync();
+            _worker.CancelAsync();
+            PurgeWorker.CancelAsync();
         }
 
         public void Pause()
         {
-            if (worker != null)
+            if (_worker != null)
             {
                 // TODO: need a better pause mechanism...
                 Close();
@@ -98,7 +92,8 @@
         {
             get
             {
-                throw new NotImplementedException();
+                //TODO:
+                return !string.IsNullOrWhiteSpace(FileName) && new FileInfo(FileName).Exists && _worker.IsBusy;
             }
         }
 
@@ -109,13 +104,13 @@
             while (!e.Cancel)
             {
                 // Go to sleep.
-                Thread.Sleep(refreshInterval);
-                lock (pendingQueue)
+                Thread.Sleep(_refreshInterval);
+                lock (_pendingQueue)//TODO: no ConcurrentQueue?
                 {
-                    if (pendingQueue.Any())
+                    if (_pendingQueue.Any())
                     {
-                        Trace.WriteLine(string.Format("Adding a batch of {0} entries to the logger", pendingQueue.Count()));
-                        Logger.AddBatch(pendingQueue);
+                        Trace.WriteLine(string.Format("Adding a batch of {0} entries to the logger", _pendingQueue.Count()));
+                        Logger.AddBatch(_pendingQueue);
                         Trace.WriteLine("Done adding the batch");
                     }
                 }
@@ -125,39 +120,44 @@
         private void PredetermineGroupNames(string messageDecoder)
         {
             string decoder = messageDecoder.ToLower();
-            if (decoder.Contains("(?<description>")) usedGroupNames.Add("Description");
-            if (decoder.Contains("(?<datetime>")) usedGroupNames.Add("DateTime");
-            if (decoder.Contains("(?<type>")) usedGroupNames.Add("Type");
-            if (decoder.Contains("(?<logger>")) usedGroupNames.Add("Logger");
+            if (decoder.Contains("(?<description>")) _usedGroupNames.Add("Description");
+            if (decoder.Contains("(?<datetime>")) _usedGroupNames.Add("DateTime");
+            if (decoder.Contains("(?<type>")) _usedGroupNames.Add("Type");
+            if (decoder.Contains("(?<logger>")) _usedGroupNames.Add("Logger");
         }
 
         private void DoWork(object sender, DoWorkEventArgs e)
         {
-            // Read existing content.
             var fi = new FileInfo(FileName);
 
             // Keep hold of incomplete lines, if any.
             var incomplete = string.Empty;
             var sb = new StringBuilder();
 
-            if (!loadExistingContent)
-            {
-                bytesRead = fi.Length;
-            }
+            if (!_loadExistingContent)
+                _bytesRead = fi.Length;
 
             while (!e.Cancel)
             {
+                fi.Refresh();
+
                 if (fi.Exists)
                 {
-                    fi.Refresh();
-
                     var length = fi.Length;
-                    if (length > bytesRead)
+                    if (length < _bytesRead)
+                    {
+                        // File has been cleared
+                        _bytesRead = 0;
+                        _pendingQueue.Clear();
+                        Logger.Clear();
+                    }
+
+                    if (length > _bytesRead)
                     {
                         using (var fs = fi.Open(FileMode.Open, FileAccess.Read, FileShare.Write))
                         {
-                            var position = fs.Seek(bytesRead, SeekOrigin.Begin);
-                            Debug.Assert(position == bytesRead, "Seek did not go to where we asked.");
+                            var position = fs.Seek(_bytesRead, SeekOrigin.Begin);
+                            Debug.Assert(position == _bytesRead, "Seek did not go to where we asked.");
 
                             // Calculate length of file.
                             var bytesToRead = length - position;
@@ -178,26 +178,25 @@
                                 while (sr.Peek() != -1)
                                 {
                                     var line = sr.ReadLine();
-                                    
-                                    // Trace.WriteLine("Read: " + line);
+
                                     DecodeAndQueueMessage(line);
                                 }
                             }
 
                             // Can we determine whether any tailing data was unprocessed?
-                            bytesRead = position + bytesSuccessfullyRead;
+                            _bytesRead = position + bytesSuccessfullyRead;
                         }
                     }
                 }
 
-                Thread.Sleep(refreshInterval);
+                Thread.Sleep(_refreshInterval);
             }
         }
 
         private void DecodeAndQueueMessage(string message)
         {
-            Debug.Assert(patternMatching != null, "Regular expression has not be set");
-            var m = patternMatching.Match(message);
+            Debug.Assert(_patternMatching != null, "Regular expression has not be set");
+            var m = _patternMatching.Match(message);
 
             if (!m.Success)
             {
@@ -205,16 +204,16 @@
                 return;
             }
 
-            lock (pendingQueue)
+            lock (_pendingQueue)
             {
                 var entry = new LogEntry();
 
-                if (usedGroupNames.Contains("Description"))
+                if (_usedGroupNames.Contains("Description"))
                 {
                     entry.Description = m.Groups["Description"].Value;
                 }
 
-                if (usedGroupNames.Contains("DateTime"))
+                if (_usedGroupNames.Contains("DateTime"))
                 {
                     DateTime dt;
                     if (!DateTime.TryParse(m.Groups["DateTime"].Value, out dt))
@@ -224,24 +223,24 @@
                     entry.DateTime = dt;
                 }
 
-                if (usedGroupNames.Contains("Type"))
+                if (_usedGroupNames.Contains("Type"))
                 {
                     entry.Type = m.Groups["Type"].Value;
                 }
 
-                if (usedGroupNames.Contains("Logger"))
+                if (_usedGroupNames.Contains("Logger"))
                 {
                     entry.Source = m.Groups["Logger"].Value;
                 }
 
-                pendingQueue.Enqueue(entry);
+                _pendingQueue.Enqueue(entry);
             }
         }
 
         private void DoWorkComplete(object sender, RunWorkerCompletedEventArgs e)
         {
             // TODO: brutal...
-            worker = null;
+            _worker = null;
         }
 
         public class ProviderInfo : IProviderInfo
