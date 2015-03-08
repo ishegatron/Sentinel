@@ -233,6 +233,12 @@
                     entry.Source = m.Groups["Logger"].Value;
                 }
 
+                entry.MetaData = new Dictionary<string, object>
+                                          {
+                                              { "Classification", string.Empty },
+                                              { "Host", FileName }
+                                          };
+
                 _pendingQueue.Enqueue(entry);
             }
         }
