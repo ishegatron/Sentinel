@@ -216,6 +216,8 @@ namespace Sentinel.Views.Gui
             }
             else if (e.PropertyName == "FilteredCount" || e.PropertyName == "UnfilteredCount")
             {
+                if (Logger.Entries.Count() == 0) Messages.Clear();
+
                 bool filtered = FilteredCount < UnfilteredCount;
                 Status = filtered
                              ? string.Format("{0} of {1} Messages [Filters Applied]", FilteredCount, UnfilteredCount)

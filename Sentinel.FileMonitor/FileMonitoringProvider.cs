@@ -231,6 +231,7 @@
                 if (_usedGroupNames.Contains("Logger"))
                 {
                     entry.Source = m.Groups["Logger"].Value;
+                    entry.System = m.Groups["Logger"].Value;
                 }
 
                 entry.MetaData = new Dictionary<string, object>
@@ -238,6 +239,7 @@
                                               { "Classification", string.Empty },
                                               { "Host", FileName }
                                           };
+                if (entry.Description.ToUpper().Contains("EXCEPTION")) entry.MetaData.Add("Exception", true);
 
                 _pendingQueue.Enqueue(entry);
             }

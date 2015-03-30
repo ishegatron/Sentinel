@@ -46,6 +46,7 @@ namespace Sentinel
         private void FirstChanceExceptionHandler(object sender, FirstChanceExceptionEventArgs e)
         {
             if (e.Exception is SocketException) return;
+            if (!string.IsNullOrWhiteSpace(e.Exception.Source) && e.Exception.Source.ToLower() == "mscorlib") return;
 
             string errorString = string.Format("Sender: {0} FirstChanceException raised in {1} : Message -- {2} :: InnerException -- {3} :: TargetSite -- {4} :: StackTrace -- {5} :: HelpLink -- {6} ",
                                                     sender,

@@ -250,19 +250,22 @@
 
             DateTime date = Log4jDateBase + TimeSpan.FromMilliseconds(Double.Parse(record.Attribute("timestamp").Value));
 
-            return new LogEntry
+            var entry = new LogEntry
                        {
                            DateTime = date,
                            System = system,
                            Thread = record.Attribute("thread").Value,
                            Description = description,
-                           Type = type,                           
+                           Type = type,
                            MetaData = new Dictionary<string, object>
                                           {
                                               { "Classification", classification },
                                               { "Host", host }
                                           }
                        };
+            if (entry.Description.ToUpper().Contains("EXCEPTION")) entry.MetaData.Add("Exception", true);
+
+            return entry;
         }
     }
 }

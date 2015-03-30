@@ -45,6 +45,7 @@ namespace Sentinel.MSBuild
             System = msbuildEventType;
 
             MetaData = new Dictionary<string, object> { { "Original", content } };
+            if (Description.ToUpper().Contains("EXCEPTION")) MetaData.Add("Exception", true);
         }
 
         /// <summary>
