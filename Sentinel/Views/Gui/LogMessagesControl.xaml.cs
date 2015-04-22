@@ -1,25 +1,32 @@
 ﻿#region License
+
 //
 // © Copyright Ray Hayes
 // This source is subject to the Microsoft Public License (Ms-PL).
 // Please see http://go.microsoft.com/fwlink/?LinkID=131993 for details.
 // All other rights reserved.
 //
-#endregion
+
+#endregion License
 
 #region Using directives
 
-using System.ComponentModel;
-using System.Windows.Controls;
-using System.Windows.Data;
 using Sentinel.Highlighters;
 using Sentinel.Highlighters.Interfaces;
 using Sentinel.Interfaces;
 using Sentinel.Services;
 using Sentinel.Support;
 using Sentinel.Support.Wpf;
+using System;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Input;
 
-#endregion
+#endregion Using directives
 
 namespace Sentinel.Views.Gui
 {
@@ -32,8 +39,10 @@ namespace Sentinel.Views.Gui
         {
             InitializeComponent();
 
+            AddCopyCommandBinding();
+
             Highlight = ServiceLocator.Instance.Get<IHighlightingService<IHighlighter>>();
-            
+
             if (Highlight is INotifyPropertyChanged)
             {
                 (Highlight as INotifyPropertyChanged).PropertyChanged += (s, e) => UpdateStyles();
@@ -41,8 +50,8 @@ namespace Sentinel.Views.Gui
 
             var searchHighlighter = ServiceLocator.Instance.Get<ISearchHighlighter>();
             if (searchHighlighter != null
-                && searchHighlighter.Highlighter != null 
-                && searchHighlighter.Highlighter is INotifyPropertyChanged )
+                && searchHighlighter.Highlighter != null
+                && searchHighlighter.Highlighter is INotifyPropertyChanged)
             {
                 (searchHighlighter.Highlighter as INotifyPropertyChanged).PropertyChanged += (s, e) => UpdateStyles();
             }
@@ -102,15 +111,19 @@ namespace Sentinel.Views.Gui
                         case 0:
                             fixedColumn.FixedWidth = 0;
                             break;
+
                         case 1:
                             fixedColumn.FixedWidth = 30;
                             break;
+
                         case 2:
                             fixedColumn.FixedWidth = 60;
                             break;
+
                         case 3:
                             fixedColumn.FixedWidth = 90;
                             break;
+
                         default:
                             break;
                     }
@@ -135,22 +148,27 @@ namespace Sentinel.Views.Gui
                             dateFormat = "r";
                             column.Width = 175;
                             break;
+
                         case 1:
                             dateFormat = "dd/MM/yyyy HH:mm:ss";
                             column.Width = 120;
                             break;
+
                         case 2:
                             dateFormat = "dddd, d MMM yyyy, HH:mm:ss";
                             column.Width = 170;
                             break;
+
                         case 3:
                             dateFormat = "HH:mm:ss";
                             column.Width = 60;
                             break;
+
                         case 4:
                             dateFormat = "HH:mm:ss,fff";
                             column.Width = 80;
                             break;
+
                         default:
                             break;
                     }
@@ -164,6 +182,46 @@ namespace Sentinel.Views.Gui
         {
             messages.ItemContainerStyleSelector = null;
             messages.ItemContainerStyleSelector = new HighlightingSelector();
+        }
+
+        private void AddCopyCommandBinding()
+        {
+            ExecutedRoutedEventHandler handler = (sender, args) => { CopySelectedLogEntries(); };
+
+            var command = new RoutedCommand("Copy", typeof(GridView));
+            command.InputGestures.Add(new KeyGesture(Key.C, ModifierKeys.Control, "Copy"));
+
+            messages.CommandBindings.Add(new CommandBinding(command, handler));
+
+            try
+            {
+                System.Windows.Clipboard.SetData(DataFormats.Text, "");
+            }
+            catch (COMException)
+            {
+            }
+        }
+
+        private void CopySelectedLogEntries()
+        {
+            if (messages.SelectedItems.Count != 0)
+            {
+                var sb = new StringBuilder();
+
+                foreach (ILogEntry s in messages.SelectedItems)
+                {
+                    sb.AppendLine(string.Format("{0}|{1}|{2}|{3}", s.DateTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss.ffff"), s.Type, s.System, s.Description));
+                }
+
+                try
+                {
+                    System.Windows.Clipboard.SetData(DataFormats.Text, sb.ToString());
+                }
+                catch (COMException ex)
+                {
+                    throw new Exception("Sentinel could not copy to the clipboard", ex);
+                }
+            }
         }
     }
 }
