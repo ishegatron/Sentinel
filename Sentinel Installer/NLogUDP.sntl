@@ -1,0 +1,440 @@
+{
+  "$type": "Sentinel.Preferences.UserPreferences, Sentinel",
+  "SelectedDateOption": 0,
+  "SelectedTypeOption": 1,
+  "ShowThreadColumn": false,
+  "ShowExceptionColumn": false,
+  "UseLazyRebuild": false,
+  "UseStackedLayout": true,
+  "UseTighterRows": false
+}
+~
+{
+  "$type": "Sentinel.Filters.SearchFilter, Sentinel",
+  "Name": "SearchFilter",
+  "Enabled": false,
+  "Pattern": "",
+  "Field": "System",
+  "Mode": "Exact",
+  "Description": "Exact match of  in the System field"
+}
+~
+{
+  "$type": "Sentinel.Extractors.SearchExtractor, Sentinel",
+  "Name": "SearchExtractor",
+  "Enabled": false,
+  "Pattern": "",
+  "Field": "System",
+  "Mode": "Exact",
+  "Description": "Exact match of  in the System field"
+}
+~
+{
+  "$type": "Sentinel.Filters.FilteringService`1[[Sentinel.Filters.Interfaces.IFilter, Sentinel]], Sentinel",
+  "Filters": {
+    "$type": "System.Collections.ObjectModel.ObservableCollection`1[[Sentinel.Filters.Interfaces.IFilter, Sentinel]], System",
+    "$values": [
+      {
+        "$type": "Sentinel.Filters.StandardFilter, Sentinel",
+        "Name": "Trace",
+        "Enabled": false,
+        "Pattern": "TRACE",
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of TRACE in the Type field"
+      },
+      {
+        "$type": "Sentinel.Filters.StandardFilter, Sentinel",
+        "Name": "Debug",
+        "Enabled": false,
+        "Pattern": "DEBUG",
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of DEBUG in the Type field"
+      },
+      {
+        "$type": "Sentinel.Filters.StandardFilter, Sentinel",
+        "Name": "Info",
+        "Enabled": false,
+        "Pattern": "INFO",
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of INFO in the Type field"
+      },
+      {
+        "$type": "Sentinel.Filters.StandardFilter, Sentinel",
+        "Name": "Warn",
+        "Enabled": false,
+        "Pattern": "WARN",
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of WARN in the Type field"
+      },
+      {
+        "$type": "Sentinel.Filters.StandardFilter, Sentinel",
+        "Name": "Error",
+        "Enabled": false,
+        "Pattern": "ERROR",
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of ERROR in the Type field"
+      },
+      {
+        "$type": "Sentinel.Filters.StandardFilter, Sentinel",
+        "Name": "Fatal",
+        "Enabled": false,
+        "Pattern": "FATAL",
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of FATAL in the Type field"
+      }
+    ]
+  }
+}
+~
+{
+  "$type": "Sentinel.Extractors.ExtractingService`1[[Sentinel.Extractors.Interfaces.IExtractor, Sentinel]], Sentinel",
+  "Extractors": {
+    "$type": "System.Collections.ObjectModel.ObservableCollection`1[[Sentinel.Extractors.Interfaces.IExtractor, Sentinel]], System",
+    "$values": []
+  }
+}
+~
+{
+  "$type": "Sentinel.Highlighters.HighlightingService`1[[Sentinel.Highlighters.Interfaces.IHighlighter, Sentinel]], Sentinel",
+  "Highlighters": {
+    "$type": "System.Collections.ObjectModel.ObservableCollection`1[[Sentinel.Highlighters.Interfaces.IHighlighter, Sentinel]], System",
+    "$values": [
+      {
+        "$type": "Sentinel.Highlighters.StandardHighlighter, Sentinel",
+        "Name": "Trace",
+        "Enabled": true,
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of TRACE in the Type field",
+        "Pattern": "TRACE",
+        "Style": {
+          "$type": "Sentinel.Highlighters.HighlighterStyle, Sentinel",
+          "Background": "#FFD3D3D3"
+        }
+      },
+      {
+        "$type": "Sentinel.Highlighters.StandardHighlighter, Sentinel",
+        "Name": "Debug",
+        "Enabled": true,
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of DEBUG in the Type field",
+        "Pattern": "DEBUG",
+        "Style": {
+          "$type": "Sentinel.Highlighters.HighlighterStyle, Sentinel",
+          "Background": "#FF90EE90"
+        }
+      },
+      {
+        "$type": "Sentinel.Highlighters.StandardHighlighter, Sentinel",
+        "Name": "Info",
+        "Enabled": true,
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of INFO in the Type field",
+        "Pattern": "INFO",
+        "Style": {
+          "$type": "Sentinel.Highlighters.HighlighterStyle, Sentinel",
+          "Background": "#FF0000FF",
+          "Foreground": "#FFFFFFFF"
+        }
+      },
+      {
+        "$type": "Sentinel.Highlighters.StandardHighlighter, Sentinel",
+        "Name": "Warn",
+        "Enabled": true,
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of WARN in the Type field",
+        "Pattern": "WARN",
+        "Style": {
+          "$type": "Sentinel.Highlighters.HighlighterStyle, Sentinel",
+          "Background": "#FFFFFF00"
+        }
+      },
+      {
+        "$type": "Sentinel.Highlighters.StandardHighlighter, Sentinel",
+        "Name": "Error",
+        "Enabled": true,
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of ERROR in the Type field",
+        "Pattern": "ERROR",
+        "Style": {
+          "$type": "Sentinel.Highlighters.HighlighterStyle, Sentinel",
+          "Background": "#FFFF0000",
+          "Foreground": "#FFFFFFFF"
+        }
+      },
+      {
+        "$type": "Sentinel.Highlighters.StandardHighlighter, Sentinel",
+        "Name": "Fatal",
+        "Enabled": true,
+        "Field": "Type",
+        "Mode": "Exact",
+        "Description": "Exact match of FATAL in the Type field",
+        "Pattern": "FATAL",
+        "Style": {
+          "$type": "Sentinel.Highlighters.HighlighterStyle, Sentinel",
+          "Background": "#FF000000",
+          "Foreground": "#FFFFFF00"
+        }
+      }
+    ]
+  },
+  "SelectedIndex": -1
+}
+~
+{
+  "$type": "Sentinel.Highlighters.SearchHighlighter, Sentinel",
+  "Highlighter": {
+    "$type": "Sentinel.Highlighters.Highlighter, Sentinel",
+    "Name": "Search",
+    "Enabled": false,
+    "Field": "System",
+    "Mode": "CaseSensitive",
+    "Description": "Case sensitive match of  in the System field",
+    "Pattern": "",
+    "Style": {
+      "$type": "Sentinel.Highlighters.HighlighterStyle, Sentinel",
+      "Background": "#FF00FF00",
+      "Foreground": "#FFFF00FF"
+    }
+  },
+  "Field": "System",
+  "Enabled": false,
+  "Mode": "CaseSensitive",
+  "Search": ""
+}
+~
+{
+  "$type": "Sentinel.Classification.ClassifyingService`1[[Sentinel.Classification.Interfaces.IClassifier, Sentinel]], Sentinel",
+  "Classifiers": {
+    "$type": "System.Collections.ObjectModel.ObservableCollection`1[[Sentinel.Classification.Interfaces.IClassifier, Sentinel]], System",
+    "$values": [
+      {
+        "$type": "Sentinel.Classification.Classifier, Sentinel",
+        "Description": "RegEx match of ^\\[SimulationTime\\] (?<description>[^$]+)$ in the Description field",
+        "Enabled": true,
+        "Field": "Description",
+        "Mode": "RegularExpression",
+        "Name": "Timing messages",
+        "Pattern": "^\\[SimulationTime\\] (?<description>[^$]+)$",
+        "Type": "TIMING"
+      },
+      {
+        "$type": "Sentinel.Classification.Classifier, Sentinel",
+        "Description": "RegEx match of Src:'(?<system>[^']+)', Msg:'(?<description>.*)'$ in the Description field",
+        "Enabled": true,
+        "Field": "Description",
+        "Mode": "RegularExpression",
+        "Name": "Smp messages",
+        "Pattern": "Src:'(?<system>[^']+)', Msg:'(?<description>.*)'$",
+        "Type": "TIMING"
+      },
+      {
+        "$type": "Sentinel.Classification.Classifier, Sentinel",
+        "Description": "RegEx match of SIMSAT:'(?<system>[^']+)', Msg:'(?<description>.*)'$ in the Description field",
+        "Enabled": true,
+        "Field": "Description",
+        "Mode": "RegularExpression",
+        "Name": "SimSat messages",
+        "Pattern": "SIMSAT:'(?<system>[^']+)', Msg:'(?<description>.*)'$",
+        "Type": "TIMING"
+      }
+    ]
+  }
+}
+~
+{
+  "$type": "Sentinel.Images.TypeToImageService, Sentinel",
+  "ImageMappings": {
+    "$type": "System.Collections.ObjectModel.ObservableCollection`1[[Sentinel.Images.ImageTypeRecord, Sentinel]], System",
+    "$values": [
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "ERROR",
+        "Quality": 0,
+        "Image": "/Resources/Small/Error.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "ERROR",
+        "Quality": 1,
+        "Image": "/Resources/Medium/Error.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "ERROR",
+        "Quality": 2,
+        "Image": "/Resources/Large/Error.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "WARN",
+        "Quality": 0,
+        "Image": "/Resources/Small/Warning.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "WARN",
+        "Quality": 1,
+        "Image": "/Resources/Medium/Warning.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "WARN",
+        "Quality": 2,
+        "Image": "/Resources/Large/Warning.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "TRACE",
+        "Quality": 0,
+        "Image": "/Resources/Small/Trace.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "TRACE",
+        "Quality": 1,
+        "Image": "/Resources/Medium/Trace.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "TRACE",
+        "Quality": 2,
+        "Image": "/Resources/Large/Trace.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "DEBUG",
+        "Quality": 0,
+        "Image": "/Resources/Small/Debug.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "DEBUG",
+        "Quality": 1,
+        "Image": "/Resources/Medium/Debug.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "DEBUG",
+        "Quality": 2,
+        "Image": "/Resources/Large/Debug.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "INFO",
+        "Quality": 0,
+        "Image": "/Resources/Small/Info.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "INFO",
+        "Quality": 1,
+        "Image": "/Resources/Medium/Info.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "INFO",
+        "Quality": 2,
+        "Image": "/Resources/Large/Info.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "FATAL",
+        "Quality": 0,
+        "Image": "/Resources/Small/Fatal.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "FATAL",
+        "Quality": 1,
+        "Image": "/Resources/Medium/Fatal.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "FATAL",
+        "Quality": 2,
+        "Image": "/Resources/Large/Fatal.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "TIMING",
+        "Quality": 0,
+        "Image": "/Resources/Small/Clock.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "UNKNOWN",
+        "Quality": 0,
+        "Image": "/Resources/Small/Unknown.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "UNKNOWN",
+        "Quality": 1,
+        "Image": "/Resources/Medium/Unknown.png",
+        "DisplayName": null
+      },
+      {
+        "$type": "Sentinel.Images.ImageTypeRecord, Sentinel",
+        "Name": "UNKNOWN",
+        "Quality": 2,
+        "Image": "/Resources/Large/Unknown.png",
+        "DisplayName": null
+      }
+    ]
+  }
+}
+~
+{
+  "$type": "Sentinel.Services.SessionManager, Sentinel",
+  "Name": "Untitled",
+  "ProviderSettings": {
+    "$type": "Sentinel.Interfaces.Providers.IProviderSettings[], Sentinel.Interfaces",
+    "$values": [
+      {
+        "$type": "Sentinel.NLog.NetworkSettings, Sentinel.NLog",
+        "Protocol": 0,
+        "Port": 9999,
+        "Summary": "Listens on Udp port 9999",
+        "Name": "Untitled",
+        "Info": {
+          "$type": "Sentinel.NLog.ProviderInfo, Sentinel.NLog",
+          "Identifier": "f12581a5-64c0-4b35-91fc-81c9a09c1e0b",
+          "Name": "NLog Viewer Provider",
+          "Description": "Handler for nLog's log4j networking protocol log target."
+        }
+      }
+    ]
+  }
+}
+~

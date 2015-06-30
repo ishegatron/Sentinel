@@ -147,6 +147,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9ECC824809654AFBB47CDFB2A22AF273"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A488205FD9DE97D37AF5BEAF2C26486D"
         "OwnerKey" = "8:_DAEC416771A0478CB96DF11D126BEEE9"
         "MsmSig" = "8:_UNDEFINED"
@@ -356,6 +362,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
             }
         }
     }
@@ -716,6 +730,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9ECC824809654AFBB47CDFB2A22AF273"
+            {
+            "SourcePath" = "8:NLogUDP.sntl"
+            "TargetName" = "8:NLogUDP.sntl"
+            "Tag" = "8:"
+            "Folder" = "8:_F8553109674A4C3D9D009BC620B45BB8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A488205FD9DE97D37AF5BEAF2C26486D"
             {
             "AssemblyRegister" = "3:1"
@@ -878,7 +912,7 @@
             {
             "Name" = "8:Sentinel Config"
             "Description" = "8:Configuration for Sentinel"
-            "Extensions" = "8:*.sntl"
+            "Extensions" = "8:.sntl"
             "MIME" = "8:"
             "Icon" = "8:_1AE75F2CB8644C65A0D924961931D5A7"
             "IconIndex" = "3:0"
@@ -961,15 +995,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Sentinel"
-        "ProductCode" = "8:{86C0D5A6-898A-42CD-8C45-FF2F8B537A31}"
-        "PackageCode" = "8:{D830F95C-57B7-4965-B257-304B18154743}"
+        "ProductCode" = "8:{FB820072-1B27-4844-A660-FC66C4340FB8}"
+        "PackageCode" = "8:{BE35B46F-D639-4E04-BC2B-8B8E7FCF3F74}"
         "UpgradeCode" = "8:{EC506F86-CB29-444D-BA77-86D093433960}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:Sentinel"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1082,6 +1116,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2A2E7A4BD4F14A8CB8C28A47687820BD"
+            {
+            "Name" = "8:Sentinel NLog UDP"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_9ECC824809654AFBB47CDFB2A22AF273"
+            "Folder" = "8:_6C4CEC8B6EB2499694B9EF0B2EAE53C1"
+            "WorkingFolder" = "8:_F8553109674A4C3D9D009BC620B45BB8"
+            "Icon" = "8:_1AE75F2CB8644C65A0D924961931D5A7"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A1D667B6A92A4388B37B1F8C083B0A53"
             {
             "Name" = "8:Sentinel Log Viewer"
@@ -1108,20 +1156,6 @@
             "Folder" = "8:_6C4CEC8B6EB2499694B9EF0B2EAE53C1"
             "WorkingFolder" = "8:"
             "Icon" = "8:_1AE75F2CB8644C65A0D924961931D5A7"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D2FEC0ACAD824724B7ADE25B050E1DE7"
-            {
-            "Name" = "8:Sentinel NLog UDP"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_DAEC416771A0478CB96DF11D126BEEE9"
-            "Folder" = "8:_F8553109674A4C3D9D009BC620B45BB8"
-            "WorkingFolder" = "8:_F8553109674A4C3D9D009BC620B45BB8"
-            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
