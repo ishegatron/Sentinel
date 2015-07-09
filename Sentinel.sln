@@ -25,8 +25,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sentinel.NLog", "Sentinel.N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog3Tester", "NLog3Tester\NLog3Tester.csproj", "{26533F90-3677-4565-84AE-928BCFDC7DFB}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sentinel Installer", "Setup1\Setup1.vdproj", "{BB979CD3-B031-4289-9793-1B5A2847655B}"
-EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sentinel Installer", "Sentinel Installer\Sentinel Installer.vdproj", "{256D28D7-C8E3-4C29-B716-867E1BEC04F1}"
 EndProject
 Global
