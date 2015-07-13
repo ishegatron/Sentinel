@@ -82,10 +82,10 @@
     <ManifestKeyFile>Sentinel_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -543,7 +543,9 @@
     <Resource Include="Resources\Small\Open.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Sentinel.ico" />
+    <Resource Include="Sentinel.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Small\Clear.png" />

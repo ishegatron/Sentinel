@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sentinel", "Sentinel\Sentinel.csproj", "{152376B9-4CED-4671-9CCB-6BD9F06A1E0D}"
 EndProject
@@ -25,46 +25,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sentinel.NLog", "Sentinel.N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog3Tester", "NLog3Tester\NLog3Tester.csproj", "{26533F90-3677-4565-84AE-928BCFDC7DFB}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sentinel Installer", "Sentinel Installer\Sentinel Installer.vdproj", "{256D28D7-C8E3-4C29-B716-867E1BEC04F1}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://cimtfs:8080/tfs/sandbox
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Sentinel\\Sentinel.csproj
-		SccProjectName1 = Sentinel
-		SccLocalPath1 = Sentinel
-		SccProjectUniqueName2 = NLogTester\\NLogTester.csproj
-		SccProjectName2 = NLogTester
-		SccLocalPath2 = NLogTester
-		SccProjectUniqueName3 = Log4NetTester\\Log4NetTester.csproj
-		SccProjectName3 = Log4NetTester
-		SccLocalPath3 = Log4NetTester
-		SccProjectUniqueName4 = WpfExtras\\WpfExtras.csproj
-		SccProjectName4 = WpfExtras
-		SccLocalPath4 = WpfExtras
-		SccProjectUniqueName5 = nLog1Tester\\nLog1Tester.csproj
-		SccProjectName5 = nLog1Tester
-		SccLocalPath5 = nLog1Tester
-		SccProjectUniqueName6 = Sentinel.Log4Net\\Sentinel.Log4Net.csproj
-		SccProjectName6 = Sentinel.Log4Net
-		SccLocalPath6 = Sentinel.Log4Net
-		SccProjectUniqueName7 = Sentinel.Interfaces\\Sentinel.Interfaces.csproj
-		SccProjectName7 = Sentinel.Interfaces
-		SccLocalPath7 = Sentinel.Interfaces
-		SccProjectUniqueName8 = Sentinel.FileMonitor\\Sentinel.FileMonitor.csproj
-		SccProjectName8 = Sentinel.FileMonitor
-		SccLocalPath8 = Sentinel.FileMonitor
-		SccProjectUniqueName9 = Sentinel.MSBuild\\Sentinel.MSBuild.csproj
-		SccProjectName9 = Sentinel.MSBuild
-		SccLocalPath9 = Sentinel.MSBuild
-		SccProjectUniqueName10 = Sentinel.NLog\\Sentinel.NLog.csproj
-		SccProjectName10 = Sentinel.NLog
-		SccLocalPath10 = Sentinel.NLog
-		SccProjectUniqueName11 = NLog3Tester\\NLog3Tester.csproj
-		SccProjectName11 = NLog3Tester
-		SccLocalPath11 = NLog3Tester
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -182,6 +145,24 @@ Global
 		{26533F90-3677-4565-84AE-928BCFDC7DFB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{26533F90-3677-4565-84AE-928BCFDC7DFB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{26533F90-3677-4565-84AE-928BCFDC7DFB}.Release|x86.ActiveCfg = Release|Any CPU
+		{BB979CD3-B031-4289-9793-1B5A2847655B}.Debug|Any CPU.ActiveCfg = Debug
+		{BB979CD3-B031-4289-9793-1B5A2847655B}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{BB979CD3-B031-4289-9793-1B5A2847655B}.Debug|x86.ActiveCfg = Debug
+		{BB979CD3-B031-4289-9793-1B5A2847655B}.Release|Any CPU.ActiveCfg = Release
+		{BB979CD3-B031-4289-9793-1B5A2847655B}.Release|Mixed Platforms.ActiveCfg = Release
+		{BB979CD3-B031-4289-9793-1B5A2847655B}.Release|x86.ActiveCfg = Release
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Debug|Any CPU.ActiveCfg = Debug
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Debug|Any CPU.Build.0 = Debug
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Debug|Mixed Platforms.Build.0 = Debug
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Debug|x86.ActiveCfg = Debug
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Debug|x86.Build.0 = Debug
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Release|Any CPU.ActiveCfg = Release
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Release|Any CPU.Build.0 = Release
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Release|Mixed Platforms.ActiveCfg = Release
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Release|Mixed Platforms.Build.0 = Release
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Release|x86.ActiveCfg = Release
+		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
