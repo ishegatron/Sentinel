@@ -99,34 +99,10 @@
             SelectedIndex="0"
             DockPanel.Dock="Top"
             ShowQuickAccessToolBarOnTop="False" Margin="0,0,-0.4,0">
-
+            
             <Ribbon.ApplicationMenu>
-                <RibbonApplicationMenu>
-                    
-                    <RibbonApplicationMenu.SmallImageSource>
-                        <DrawingImage>
-                            <DrawingImage.Drawing>
-                                <GlyphRunDrawing ForegroundBrush="White">
-                                    <GlyphRunDrawing.GlyphRun>
-                                        <GlyphRun
-                            CaretStops="{x:Null}" 
-                            ClusterMap="{x:Null}" 
-                            IsSideways="False" 
-                            GlyphOffsets="{x:Null}" 
-                            GlyphIndices="41 76 79 72" 
-                            FontRenderingEmSize="18" 
-                            DeviceFontName="{x:Null}" 
-                            AdvanceWidths="5.859375 3.90625 3.90625 10.275390625">
-                                            <GlyphRun.GlyphTypeface>
-                                                <GlyphTypeface FontUri="C:\WINDOWS\Fonts\SEGOEUI.TTF"/>
-                                            </GlyphRun.GlyphTypeface>
-                                        </GlyphRun>
-                                    </GlyphRunDrawing.GlyphRun>
-                                </GlyphRunDrawing>
-                            </DrawingImage.Drawing>
-                        </DrawingImage>
-                    </RibbonApplicationMenu.SmallImageSource>
-
+                <RibbonApplicationMenu Template="{DynamicResource RibbonApplicationMenuControlCustom}" Label="File">
+                                        
                     <RibbonApplicationMenuItem
                         Header="New Session"
                         ImageSource="/Resources/Large/Add.PNG"
