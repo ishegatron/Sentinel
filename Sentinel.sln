@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sentinel", "Sentinel\Sentinel.csproj", "{152376B9-4CED-4671-9CCB-6BD9F06A1E0D}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog3Tester", "NLog3Tester\NLog3Tester.csproj", "{26533F90-3677-4565-84AE-928BCFDC7DFB}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sentinel Installer", "Sentinel Installer\Sentinel Installer.vdproj", "{256D28D7-C8E3-4C29-B716-867E1BEC04F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLog4Tester", "NLog4Tester\NLog4Tester.csproj", "{11381943-425C-4AC5-BCDC-62EEE116E9E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -156,6 +158,18 @@ Global
 		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Release|Mixed Platforms.Build.0 = Release
 		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Release|x86.ActiveCfg = Release
 		{256D28D7-C8E3-4C29-B716-867E1BEC04F1}.Release|x86.Build.0 = Release
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Debug|x86.Build.0 = Debug|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Release|x86.ActiveCfg = Release|Any CPU
+		{11381943-425C-4AC5-BCDC-62EEE116E9E1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
