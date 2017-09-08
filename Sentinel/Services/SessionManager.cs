@@ -33,6 +33,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Windows;
+using Sentinel.Log4Net;
 
 namespace Sentinel.Services
 {
@@ -235,6 +236,16 @@ namespace Sentinel.Services
                                     Settings = thisSetting
                                 });
                             }
+                            else if (providerSetting["$type"].ToString().Contains(typeof(UdpAppenderSettings).Name))
+                            {
+                                var thisSetting = JsonHelper.DeserializeFromString<UdpAppenderSettings>(providerSetting.ToString());
+                                pendingProviderRecords.Add(new PendingProviderRecord()
+                                {
+                                    Info = thisSetting.Info,
+                                    Settings = thisSetting
+                                });
+                            }
+                            
                         }
                     }
                 }
