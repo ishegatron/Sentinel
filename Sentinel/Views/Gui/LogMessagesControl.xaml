@@ -23,7 +23,8 @@
 	<Grid x:Name="LayoutRoot">
 		<ListView x:Name="messages"
 				  Grid.Column="0"
-				  ItemsSource="{Binding Messages}">
+				  ItemsSource="{Binding Messages}"
+                  ScrollViewer.CanContentScroll="True">
 			<ListView.View>
 				<GridView>
 					<Controls:FixedWidthColumn Header="Type">
